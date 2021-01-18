@@ -9,7 +9,8 @@
 
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Agency HTML Template">
+    <meta name="description"
+        content="Join the millions of users in who buy and sell different kinds of properties everyday in local communities around you">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="author" content="Themefisher">
     <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
@@ -56,8 +57,9 @@
                     <!-- Header Contetnt -->
                     <div class="content-block">
                         <h1>Buy & Sell Near You </h1>
-                        <p>Join the millions who buy and sell from each other <br> everyday in local communities around
-                            the world</p>
+                        <p>Join the millions of users who buy and sell different kinds of properties <br> everyday in
+                            local communities around
+                            you</p>
                         <div class="short-popular-category-list text-center">
                             <h2>Popular Category</h2>
                             <ul class="list-inline">

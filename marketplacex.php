@@ -321,7 +321,7 @@
     <!-- 
 Essential Scripts
 =====================================-->
-    <script src="plugins/jquery/jquery.min.php"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/popper.min.js"></script>
     <script src="plugins/bootstrap/bootstrap.min.js"></script>
     <script src="plugins/bootstrap/bootstrap-slider.js"></script>
@@ -334,8 +334,5 @@ Essential Scripts
     <script src="js/script.js"></script>
 
 </body>
-
-
-<!-- Mirrored from demo.themefisher.com/classimax/category.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 11:40:29 GMT -->
 
 </html>

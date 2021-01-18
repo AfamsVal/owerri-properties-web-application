@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from demo.themefisher.com/classimax/about-us.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 11:40:22 GMT -->
-
 <head>
 
     <!-- ** Basic Page Needs ** -->
@@ -185,7 +183,7 @@
     <!-- 
 Essential Scripts
 =====================================-->
-    <script src="plugins/jquery/jquery.min.php"></script>
+    <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/popper.min.js"></script>
     <script src="plugins/bootstrap/bootstrap.min.js"></script>
     <script src="plugins/bootstrap/bootstrap-slider.js"></script>
@@ -199,7 +197,5 @@ Essential Scripts
 
 </body>
 
-
-<!-- Mirrored from demo.themefisher.com/classimax/about-us.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 05 Jan 2021 11:40:25 GMT -->
 
 </html>
