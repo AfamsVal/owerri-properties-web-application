@@ -34,7 +34,7 @@
           <ul>
             <li>Imo State</li>
             <li>Nigeria</li>
-            <li><a href="store.php">+234800000000</a></li>
+            <li><a href="store.php">+2348029261486</a></li>
 
 
 
@@ -70,19 +70,21 @@
       <div class="col-lg-7 text-center text-lg-right mb-3 mb-lg-0">
         <!-- Copyright -->
         <div class="copyright">
-          <p>Copyright &copy; <script>
+          <p>Copyright &copy; Owerri Property <script>
               var CurrentYear = new Date().getFullYear()
               document.write(CurrentYear)
-            </script> | Designed & Developed by <a class="text-white" href="https://laffout.com">Afams Val</a></p>
+            </script>
+             <!-- | Designed & Developed by <a class="text-white" href="https://laffout.com">Afams Val</a> -->
+          &nbsp;  |  </p>
         </div>
       </div>
       <div class="col-lg-5">
         <!-- Social Icons -->
         <ul class="social-media-icons text-center text-lg-left">
-          <li><a class="fa fa-facebook" href="https://www.facebook.com"></a></li>
-          <li><a class="fa fa-twitter" href="https://www.twitter.com"></a></li>
-          <li><a class="fa fa-pinterest-p" href="https://www.pinterest.com"></a></li>
-          <li><a class="fa fa-github-alt" href="https://www.github.com"></a></li>
+          <li class="d-block" style="color:#bbb"><strong>Follow Us:</strong></li>
+          <li><a class="fa fa-facebook fa-lg" href="https://www.facebook.com/owerriproperty"></a></li>
+          <li><a class="fa fa-twitter fa-lg" href="https://www.twitter.com/owerriproperty"></a></li>
+          <li><a class="fa fa-instagram fa-lg" href="https://www.instagram.com/owerriproperty"></a></li>
         </ul>
       </div>
     </div>

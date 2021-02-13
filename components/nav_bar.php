@@ -1,6 +1,17 @@
 	<?php
+	// include '../backend/functions.php';
+	// $referrals = new Functions();
+	// $referrals->check_cookie();
+	
+	$session_id = $_SESSION['user_id_xxxxxxxx'];
+
+	if($session_id){
+		$power = $referrals->power('users',$session_id);
+	}
+	
 	$server = explode("/",$_SERVER['REQUEST_URI']);
 	$path = end($server);
+
 	?>
 	<nav class="navbar navbar-expand-md navbar-light px-4 bg-light fixed-top navigation">
 					<a class="navbar-brand" href="home">
@@ -12,29 +23,43 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item <?php  if($path ==="home"){ echo "active"; }; ?>"><a class="nav-link" href="home">
-							Homes</a></li>
-							<li class="nav-item  <?php  if($path ==="about"){ echo "active"; }; ?>"><a class="nav-link" href="about">About Us</a></li>
-							<li class="nav-item  <?php  if($path ==="properties"){ echo "active"; }; ?>"><a class="nav-link" href="properties">Properties</a></li>
-							
-							<li class="nav-item dropdown dropdown-slide @@listing">
-								<a class="nav-link dropdown-toggle" href="#!" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Listing <span><i class="fa fa-angle-down"></i></span>
-								</a>
-								
-								<ul class="dropdown-menu">
-									<li><a class="dropdown-item @@category" href="marketplace">Marketplace</a></li>
-									<li><a class="dropdown-item @@listView" href="agents">Agents</a></li>
-								</ul>
-							</li>
+							<li class="nav-item <?php  if($path ==="home"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="home">Homes</a></li>
+							<li class="nav-item  <?php  if($path ==="about"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="about">About Us</a></li>
+							<li class="nav-item  <?php  if($path ==="properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="properties">Properties</a></li>
+							<li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="marketplace">Marketplace</a></li>
+							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="agents">Agents</a></li>	
 						</ul>
-						<ul class="navbar-nav ml-auto mt-10">
+						<?php
+						
+						if($session_id){
+							$power = $referrals->power('users',$session_id);
+					
+						echo '<ul class="navbar-nav ml-auto mt-10">
+							<li class="nav-item">
+						<div class="dropdown">
+						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+						<strong>'.$power[2]->first_name.'</strong>
+						</button>
+						<div class="dropdown-menu">
+						  <a class="dropdown-item" href="my-account">My Account</a>
+						  <a class="dropdown-item" href="my-property">My Property</a>
+						  <a class="dropdown-item" href="logout">Logout</a>
+						</div>
+					  </div>
+					  </li>
+						</ul>';
+						}else{
+							echo '<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
 								<a class="nav-link login-button" href="login">Login</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link text-white add-button" href="register"><i class="fa fa-plus-circle"></i> Register</a>
 							</li>
-						</ul>
+						</ul>';
+
+						}
+						
+						?>
 					</div>
 				</nav>

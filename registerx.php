@@ -1,3 +1,20 @@
+<?php
+include 'backend/functions.php';
+$referrals = new Functions();
+$referrals->check_cookie();
+// $referrals->page_session_auth();
+
+
+if($_SESSION['user_id_xxxxxxxx']){
+    $uid = $_SESSION['user_id_xxxxxxxx'];
+    $power = $referrals->power('users',$uid);
+}
+
+$myipAddress = $referrals->getrealip();
+$referrals->visited_page('Register',$myipAddress);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,19 +71,17 @@
                             <fieldset class="p-4">
                                 <div class="row">
                                     <div class="col-12 col-md-6">
-                                        <input class="form-control mb-3" type="text" placeholder="Full Name*" required>
+                                        <input class="form-control mb-3" id="first_name" type="text" placeholder="First Name*" >
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <input class="form-control mb-3" type="text" placeholder="Phone*" required>
+                                        <input autocomplete="off" class="form-control mb-3" id="phone" type="text" placeholder="Phone*" >
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <input class="form-control mb-3" type="email" placeholder="Email*" required>
+                                        <input class="form-control mb-3" id="email" type="email" placeholder="Email*" >
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <select class="form-control" id="state">
-                                            <option
-                                                value="<?php if(isset($_SESSION['state_reg'])){ echo $_SESSION['state_reg']; }else{ echo ''; } ?>"
-                                                selected="selected">
+                                        <select class="form-control w-100" id="state">
+                                            <option value="<?php if(isset($_SESSION['state_reg'])){ echo $_SESSION['state_reg']; }else{ echo ''; } ?>">
                                                 <?php if(isset($_SESSION['state_reg'])){ echo $_SESSION['state_reg']; }else{ echo 'Select State*'; } ?>
                                             </option>
                                             <option value="Abuja FCT">Abuja FCT</option>
@@ -110,12 +125,12 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <input class="form-control mb-3" type="password" placeholder="Password*"
-                                            required>
+                                        <input class="form-control mb-3" id="password" type="password" placeholder="Password*"
+                                            >
                                     </div>
                                     <div class="col-12 col-md-6">
-                                        <input class="form-control mb-3" type="password" placeholder="Confirm Password*"
-                                            required>
+                                        <input class="form-control mb-3" id="c_password" type="password" placeholder="Confirm Password*"
+                                            >
                                     </div>
 
                                     <div class="col-12 loggedin-forgot d-inline-flex mt-3">
@@ -124,11 +139,15 @@
                                                 class="text-primary font-weight-bold" href="terms-conditions">Terms &
                                                 Conditions</a></label>
                                     </div>
+                                    
                                     <div class="col-12">
+                                        <!-- ALERT  DIV HERE -->
+                                        <div id="reg_error" class="alert alert-danger d-none py-1"></div>
+
                                         <a class="d-block text-primary" href="login">Already a member?</a>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary font-weight-bold mt-3">Register
+                                        <button type="submit" id="reg_now" class="btn btn-primary font-weight-bold mt-3">Register
                                             Now</button>
                                     </div>
                                 </div>
@@ -155,10 +174,108 @@ Essential Scripts
     <script src="plugins/raty/jquery.raty-fa.js"></script>
     <script src="plugins/slick/slick.min.js"></script>
     <script src="plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
-
-
+    <script src="js/isEmail.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        $('#reg_now').click(function(e) {
+            e.preventDefault()
+            var first_name = $("#first_name").val();
+            var phone = $("#phone").val();
+            var email = $("#email").val();
+            var state = $("#state").val();
+            var password = $("#password").val();
+            var c_password = $("#c_password").val();
+            $('#user_err').hide();
+            let error = "";
+            let success = "";
+             if (first_name.trim().length > 0) {
+                 if (phone.trim().length > 0) {
+                     if (email.trim().length > 0) {
+                         if (IsEmail(email) == true) {
+                            if (state.trim().length > 0) {
+                                    if (password.trim().length > 0) {
+                                        if (password.trim().length > 5) {
+                                            if (password === c_password) {
+                                                $('#reg_now').html(
+                                                    '<i class="fa fa-spinner fa-spin"></i> Registering...'
+                                                );
+                                                $('#reg_now').attr('disabled', 'disabled');
 
+                                                $.ajax({
+                                                    method: 'POST',
+                                                    url: 'backend/api.php',
+                                                    cache: false,
+                                                    data: {
+                                                        register: 'register',
+                                                        phone: phone,
+                                                        email: email,
+                                                        first_name: first_name,
+                                                        state: state,
+                                                        password: password,
+                                                        c_password: c_password
+                                                    },
+                                                    success: function(data) {
+                                                        if (data == 1) {
+                                                            $('#reg_now').html(
+                                                                '<i class="fa fa-unlock-alt"></i> Register Now '
+                                                            );
+                                                            $('#reg_error').removeClass(
+                                                                'd-none alert-danger')
+                                                            $('#reg_error').addClass(
+                                                                'alert-success')
+                                                            $('#reg_error').html(
+                                                                '<strong>Registration Successful!</strong>'
+                                                            );
+                                                           window.location.replace("home");
+
+                                                        } else if(data !="") {
+
+                                                            $('#reg_now').html(
+                                                                '<i class="fa fa-unlock-alt"></i> Register Now '
+                                                            );
+                                                            $('#reg_error').removeClass(
+                                                                'd-none  alert-success')
+                                                            $('#reg_error').addClass(
+                                                                'alert-danger')
+                                                            $('#reg_error').html(data);
+                                                        }
+                                                        $('#reg_now').attr('disabled',
+                                                            false);
+                                                    }
+                                                })
+                                            } else {
+                                                error = 'Password does not match!';
+                                            }
+                                        } else {
+                                            error = 'Password is less than six(6) characters!';
+                                        }
+
+                                    } else {
+                                        error = 'Password is required!';
+                                    }
+                            } else {
+                                error = 'State is required!';
+                            }
+                        } else {
+                            error = 'Email is not valid!';
+                        }
+                    } else {
+                        error = 'Email is required!';
+                    }
+                } else {
+                    error = 'Phone is required!';
+                }
+            } else {
+                error = 'Firstname is required!';
+            }
+
+            if (error.trim().length > 0) {
+                $('#reg_error').removeClass('d-none alert-success')
+                $('#reg_error').addClass('alert-danger')
+                $('#reg_error').html(error);
+            }
+        })
+    </script>
 </body>
 
 </html>

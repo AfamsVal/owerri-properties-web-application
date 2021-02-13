@@ -69,22 +69,11 @@ $referrals->visited_page('Properties',$myipAddress);
                     <div class="advance-search nice-select-white">
                         <form>
                             <div class="form-row align-items-center">
-                                <div class="form-group col-xl-4 col-lg-3 col-md-6">
+                                <div class="form-group col-xl-10 col-lg-9 col-md-6">
                                     <input type="text" class="form-control my-2 my-lg-0" id="inputtext4"
                                         placeholder="What are you looking for">
                                 </div>
-                                <div class="form-group col-lg-3 col-md-6">
-                                    <select class="w-100 form-control my-2 my-lg-0">
-                                        <option>Category</option>
-                                        <option value="1">Top rated</option>
-                                        <option value="2">Lowest Price</option>
-                                        <option value="4">Highest Price</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-lg-3 col-md-6">
-                                    <input type="text" class="form-control my-2 my-lg-0" id="inputLocation4"
-                                        placeholder="Location">
-                                </div>
+                               
                                 <div class="form-group col-xl-2 col-lg-3 col-md-6">
 
                                     <button type="submit" class="btn btn-primary active w-100">Search Now</button>
@@ -96,13 +85,18 @@ $referrals->visited_page('Properties',$myipAddress);
             </div>
         </div>
     </section>
-    <section class="section-sm">
+    <section class="section-sm mt-0">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="search-result bg-gray">
-                        <h2>Results For All Properties</h2>
-                        <p>700 Results found</p>
+                    <div class="search-result bg-dark">
+                        <h2 class="text-white">My Properties</h2>
+                        <p class="text-white">700 Results found</p>
+                        <p>
+                        <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-2 active    ">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Add Properties
+                         </button>
+                        </p>                        
                     </div>
                 </div>
             </div>
@@ -138,26 +132,7 @@ $referrals->visited_page('Properties',$myipAddress);
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-8">
-                    <div class="category-search-filter">
-                        <div class="row">
-                            <div class="col-md-6 text-center text-md-left">
-                                <div class="view">
-                                    <strong>View All</strong>
-                                </div>
-                            </div>
-                            <div class="col-md-6 text-center text-md-right mt-2 mt-md-0">
-                                <strong>Filter: </strong>
-                                <select>
-                                    <option>Most Recent</option>
-                                    <option value="1">Most Popular</option>
-                                    <option value="2">Lowest Price</option>
-                                    <option value="4">Highest Price</option>
-                                </select>
-                            </div>
-
-                        </div>
-                    </div>
-
+                  
                     <!-- ad listing list  -->
                     <div class="ad-listing-list mt-20">
                         <div class="row p-lg-3 p-sm-5 p-4">
@@ -385,6 +360,64 @@ $referrals->visited_page('Properties',$myipAddress);
             </div>
         </div>
     </section>
+
+    <!-- Modal Box Starts Here
+//////////////////////////// -->
+ <div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title font-weight-bold text-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add New Property</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+      <form class="row" action="/action_page.php">
+  <div class="form-group col-12">
+    <input type="email" class="form-control" placeholder="Property name">
+  </div>
+  <div class="form-group col-12">
+    <input type="text" class="form-control" placeholder="Price">
+  </div>
+  <div class="form-group col-12">
+    <input type="text" class="form-control" maxlength="20" placeholder="Location">
+  </div>
+  
+  <div class="form-group col-12">
+  <textarea class="form-control" rows="3"  maxlength="300" placeholder="Description"></textarea>
+</div>  
+
+  <div class="form-group col-6 pr-1">
+  <select class="form-control w-100">
+    <option>category</option>
+    <option>Land</option>
+    <option>House</option>
+    <option>Office</option>
+    <option>Cars</option>
+  </select>
+</div>
+<div class="form-group col-6 pl-1">
+  <select class="form-control w-100">
+    <option>Type</option>
+    <option>Brand New</option>
+    <option>Used</option>
+  </select>
+</div>
+</form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary active" data-dismiss="modal"><i class="fa fa-plus" aria-hidden="true"></i> Submit Property</button>
+        <button type="button" class="btn btn-danger active" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
     <!--============================
 =            Footer            =

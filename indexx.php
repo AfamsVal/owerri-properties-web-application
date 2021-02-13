@@ -1,3 +1,22 @@
+<?php
+include 'backend/functions.php';
+$referrals = new Functions();
+$referrals->check_cookie();
+// $referrals->page_session_auth();
+
+
+$uid = $_SESSION['user_id_xxxxxxxx'];
+if($uid){
+    $power = $referrals->power('users',$uid);
+}
+
+$myipAddress = $referrals->getrealip();
+$referrals->visited_page('Dashboard',$myipAddress);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +75,7 @@
                 <div class="col-md-12">
                     <!-- Header Contetnt -->
                     <div class="content-block">
-                        <h1>Buy & Sell Near You </h1>
+                        <h1>Buy & Sell Near You</h1>
                         <p>Join the millions of users who buy and sell different kinds of properties <br> everyday in
                             local communities around
                             you</p>

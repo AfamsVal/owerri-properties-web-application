@@ -1,3 +1,21 @@
+<?php
+include 'backend/functions.php';
+$referrals = new Functions();
+$referrals->check_cookie();
+// $referrals->page_session_auth();
+
+
+$uid = $_SESSION['user_id_xxxxxxxx'];
+if($uid){
+    $power = $referrals->power('users',$uid);
+}
+
+$myipAddress = $referrals->getrealip();
+$referrals->visited_page('Terms&Condition',$myipAddress);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

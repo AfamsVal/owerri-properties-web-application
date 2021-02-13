@@ -1,3 +1,22 @@
+<?php
+include 'backend/functions.php';
+$referrals = new Functions();
+$referrals->check_cookie();
+// $referrals->page_session_auth();
+
+
+$uid = $_SESSION['user_id_xxxxxxxx'];
+if($uid){
+    $power = $referrals->power('users',$uid);
+}
+
+$myipAddress = $referrals->getrealip();
+$referrals->visited_page('MktPlace',$myipAddress);
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,16 +117,6 @@
                                 <li><a href="category.php">Offices <span>183</span></a></li>
                                 <li><a href="category.php">Cars <span>343</span></a></li>
                             </ul>
-                        </div>
-
-                        <div class="widget price-range w-100">
-                            <h4 class="widget-header">Price Limit</h4>
-                            <div class="block">
-                                <input class="range-track w-100" type="text" placeholder="E.g 35000">
-                                <div class="d-flex justify-content-between mt-2">
-                                    <span class="value">Maximum Amount</span>
-                                </div>
-                            </div>
                         </div>
 
                         <div class="widget product-shorting">
