@@ -51,7 +51,7 @@ $referrals->visited_page('Properties',$myipAddress);
 </head>
 
 <body class="body-wrapper">
-
+<div id="cover-spin"></div>
     <header>
         <div class="container">
             <div class="row">
@@ -69,15 +69,16 @@ $referrals->visited_page('Properties',$myipAddress);
                     <div class="advance-search nice-select-white">
                         <form>
                             <div class="form-row align-items-center">
-                                <div class="form-group col-xl-10 col-lg-9 col-md-6">
-                                    <input type="text" class="form-control my-2 my-lg-0" id="inputtext4"
-                                        placeholder="What are you looking for">
+                                <div class="form-group col-12">
+                                   
+                                     <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-light" type="button"><i class="fa fa-search" aria-hidden="true"></i></button>
+  </div>
+</div>
                                 </div>
                                
-                                <div class="form-group col-xl-2 col-lg-3 col-md-6">
-
-                                    <button type="submit" class="btn btn-primary active w-100">Search Now</button>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -131,208 +132,13 @@ $referrals->visited_page('Properties',$myipAddress);
 
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-8">
+                <div class="col-lg-9 col-md-8" id="myData">
                   
                     <!-- ad listing list  -->
-                    <div class="ad-listing-list mt-20">
-                        <div class="row p-lg-3 p-sm-5 p-4">
-                            <div class="col-lg-4 align-self-center">
-                                <a href="single.php">
-                                    <img src="images/products/products-1.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-10">
-                                        <div class="ad-listing-content">
-                                            <div>
-                                                <a href="single.php" class="font-weight-bold">Interior Design</a>
-                                            </div>
-                                            <ul class="list-inline mt-2 mb-3">
-                                                <li class="list-inline-item"><a href="category.php"> <i
-                                                            class="fa fa-folder-open-o"></i> Electronics</a></li>
-                                                <li class="list-inline-item"><a href="category-2.php"><i
-                                                            class="fa fa-calendar"></i>26th December</a></li>
-                                            </ul>
-                                            <p class="pr-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Explicabo, aliquam!</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 align-self-center">
-                                        <div class="product-ratings float-lg-right pb-3">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ad-listing-list mt-20">
-                        <div class="row p-lg-3 p-sm-5 p-4">
-                            <div class="col-lg-4 align-self-center">
-                                <a href="single.php">
-                                    <img src="images/products/products-2.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-10">
-                                        <div class="ad-listing-content">
-                                            <div>
-                                                <a href="single.php" class="font-weight-bold">Clean Toyota Car</a>
-                                            </div>
-                                            <ul class="list-inline mt-2 mb-3">
-                                                <li class="list-inline-item"><a href="category.php"> <i
-                                                            class="fa fa-folder-open-o"></i> Electronics</a></li>
-                                                <li class="list-inline-item"><a href="category-2.php"><i
-                                                            class="fa fa-calendar"></i>26th December</a></li>
-                                            </ul>
-                                            <p class="pr-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Explicabo, aliquam!</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 align-self-center">
-                                        <div class="product-ratings float-lg-right pb-3">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ad-listing-list mt-20">
-                        <div class="row p-lg-3 p-sm-5 p-4">
-                            <div class="col-lg-4 align-self-center">
-                                <a href="single.php">
-                                    <img src="images/products/products-3.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-10">
-                                        <div class="ad-listing-content">
-                                            <div>
-                                                <a href="single.php" class="font-weight-bold">3 Bedroom Flat</a>
-                                            </div>
-                                            <ul class="list-inline mt-2 mb-3">
-                                                <li class="list-inline-item"><a href="category.php"> <i
-                                                            class="fa fa-folder-open-o"></i> Electronics</a></li>
-                                                <li class="list-inline-item"><a href="category-2.php"><i
-                                                            class="fa fa-calendar"></i>26th December</a></li>
-                                            </ul>
-                                            <p class="pr-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Explicabo, aliquam!</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 align-self-center">
-                                        <div class="product-ratings float-lg-right pb-3">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ad-listing-list mt-20">
-                        <div class="row p-lg-3 p-sm-5 p-4">
-                            <div class="col-lg-4 align-self-center">
-                                <a href="single.php">
-                                    <img src="images/products/products-4.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-10">
-                                        <div class="ad-listing-content">
-                                            <div>
-                                                <a href="single.php" class="font-weight-bold">Clean Toyota Car</a>
-                                            </div>
-                                            <ul class="list-inline mt-2 mb-3">
-                                                <li class="list-inline-item"><a href="category.php"> <i
-                                                            class="fa fa-folder-open-o"></i> Electronics</a></li>
-                                                <li class="list-inline-item"><a href="category-2.php"><i
-                                                            class="fa fa-calendar"></i>26th December</a></li>
-                                            </ul>
-                                            <p class="pr-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Explicabo, aliquam!</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 align-self-center">
-                                        <div class="product-ratings float-lg-right pb-3">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ad-listing-list mt-20">
-                        <div class="row p-lg-3 p-sm-5 p-4">
-                            <div class="col-lg-4 align-self-center">
-                                <a href="single.php">
-                                    <img src="images/products/products-1.jpg" class="img-fluid" alt="">
-                                </a>
-                            </div>
-                            <div class="col-lg-8">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-10">
-                                        <div class="ad-listing-content">
-                                            <div>
-                                                <a href="single.php" class="font-weight-bold">Interior Design</a>
-                                            </div>
-                                            <ul class="list-inline mt-2 mb-3">
-                                                <li class="list-inline-item"><a href="category.php"> <i
-                                                            class="fa fa-folder-open-o"></i> Electronics</a></li>
-                                                <li class="list-inline-item"><a href="category-2.php"><i
-                                                            class="fa fa-calendar"></i>26th December</a></li>
-                                            </ul>
-                                            <p class="pr-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                Explicabo, aliquam!</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 align-self-center">
-                                        <div class="product-ratings float-lg-right pb-3">
-                                            <ul class="list-inline">
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item selected"><i class="fa fa-star"></i></li>
-                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ad listing list  -->
+                   
 
                     <!-- pagination -->
-                    <div class="pagination justify-content-center py-4">
+                    <!-- <div class="pagination justify-content-center py-4">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item">
@@ -352,7 +158,7 @@ $referrals->visited_page('Properties',$myipAddress);
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                     <!-- pagination -->
                 </div>
 
@@ -375,44 +181,64 @@ $referrals->visited_page('Properties',$myipAddress);
 
       <!-- Modal body -->
       <div class="modal-body">
-      <form class="row" action="/action_page.php">
+      <form  id="myform" class="row" method="POST">
+
   <div class="form-group col-12">
-    <input type="email" class="form-control" placeholder="Property name">
+  <div class="error-container">
+		<center><span id="preview">
+		<img id="previewimg" src="" style="max-width:160px; max-height:160px; ">
+		</span>
+		<button class="btn btn-danger btn-xs" style="display:none;margin-top:5px;" id="deleteimg"> Remove </button>
+		<div class="progress" style="display:none;"><div class="bar"></div><div class="percent">0%</div>
+		</div>
+
+		<div id="status">
+		</center>
+		</div>
+	</div>
+</div>
+  <div class="form-group col-12">
+    <div class="form-group">
+        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;" src="images/upload.jpg" alt="Upload Event" /></center>
+        <input type="file" id="upload" name="upload" style="color:#fff;background:black; display:none;" class="form-control">
+    </div>
   </div>
   <div class="form-group col-12">
-    <input type="text" class="form-control" placeholder="Price">
+    <input type="text" id="property_name" name="property_name" maxlength="30" class="form-control" placeholder="Property name">
   </div>
   <div class="form-group col-12">
-    <input type="text" class="form-control" maxlength="20" placeholder="Location">
+    <input type="text" id="property_price" name="property_price" class="form-control" placeholder="Price">
+  </div>
+  <div class="form-group col-12">
+    <input type="text" id="location" name="location" class="form-control" maxlength="20" placeholder="Location">
   </div>
   
   <div class="form-group col-12">
-  <textarea class="form-control" rows="3"  maxlength="300" placeholder="Description"></textarea>
+  <textarea class="form-control" name="description" id="description" rows="3"  maxlength="300" placeholder="Description"></textarea>
 </div>  
 
-  <div class="form-group col-6 pr-1">
-  <select class="form-control w-100">
-    <option>category</option>
-    <option>Land</option>
-    <option>House</option>
-    <option>Office</option>
-    <option>Cars</option>
+  <div class="form-group col-12">
+  <select id="category" name="category" class="form-control w-100">
+    <option value="">category</option>
+    <option value="Land">Land</option>
+    <option value="House">House</option>
+    <option value="Office">Office</option>
+    <option value="Cars">Cars</option>
   </select>
 </div>
-<div class="form-group col-6 pl-1">
-  <select class="form-control w-100">
-    <option>Type</option>
-    <option>Brand New</option>
-    <option>Used</option>
+<div class="form-group col-12">
+  <select id="type" name="type" class="form-control w-100">
+    <option value="">Type</option>
+    <option value="Brand New">Brand New</option>
+    <option value="Used">Used</option>
   </select>
+</div>
+<div class="col-12 mt-1 mb-3">
+<label id="feed_e"></label><br><br>
+<button type="submit" id="add_property" class="btn btn-primary active"><i class="fa fa-plus" aria-hidden="true"></i> Add Property</button>
+<button type="button" class="btn btn-danger active" data-dismiss="modal">Close</button>
 </div>
 </form>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary active" data-dismiss="modal"><i class="fa fa-plus" aria-hidden="true"></i> Submit Property</button>
-        <button type="button" class="btn btn-danger active" data-dismiss="modal">Close</button>
       </div>
 
     </div>
@@ -437,7 +263,160 @@ Essential Scripts
 
 
     <script src="js/script.js"></script>
+<script>
+    $(document).ready(function(){
 
+    //CODE FOR FETCHING OUT NEWS STARTS HERE
+    var limit_f = 10;
+	var start_f = 0;
+	var action = 'inactive';
+	function load_all_properties(limit_f,start_f){
+		$.ajax({
+			method:'POST',
+			url:'backend/api.php',
+			cache:false,
+			data:{limit_f,start_f},
+			success:function(data){
+				if(start_f == 0 && data != ""){ $('#myData').html(''); }
+				$('#myData').append(data);
+				if(data == ""){
+				if(start_f == 0){
+				$('.data_info').html('<button type="button" onclick="location.reload();" class="btn btn-turquoise">NO PROPERTY YET..</button>');
+					}else{
+				$('.data_info').html('<button type="button" onclick="location.reload();" class="btn btn-turquoise">NO MORE PROPERTY FOUND FOR NOW!!</button>');
+					}
+				action = 'active';
+				}else{
+					$('.data_info').html('<img src="images/loader.gif" alt="Loading..." style="height:50px;">');
+					action = 'inactive';
+				}
+				 $('#cover-spin').hide(0);
+			}
+		})
+	}
+	
+	setTimeout(function(){  $('#cover-spin').hide(0); },7000);
+	//End of function
+	
+		
+	if(action == 'inactive'){
+		action = 'active';
+		load_all_properties(limit_f,start_f);
+	}
+	$(window).scroll(function(){
+			
+		if($(window).scrollTop() + $(window).height() > $('.add_joke').height() && action == 'inactive'){
+			action = 'active';
+			start_f = start_f + limit_f;
+			load_all_properties(limit_f,start_f);
+		}
+
+	})
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $("#myform").on('submit',(function(e){
+	$("#add_property").html('<i class="fa fa-spinner fa-spin"></i> Add Property')
+	$('#add_property').attr("disabled", "disabled");
+e.preventDefault();
+var formdata = new FormData(this);
+		$.ajax({
+				url: "backend/api.php",
+				type: "POST",
+				data: formdata,
+				contentType: false,
+				cache: false,
+				processData:false,
+                beforeSend:function(){
+				},
+				
+		success: function(data){
+		if(data ==1){
+            $(':input').val('');
+            $(':file').val('');
+            $("#previewimg").hide();
+            $("#deleteimg").hide();
+            $('#imgupload').attr('src','images/upload.jpg');
+            $("#imgupload").show();
+            $('#feed_e').slideDown();
+            $('#feed_e').html('<span style="color:green;"><strong>UPLOADED SUCCESSFULLY</strong></span>');
+            $("#add_property").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
+            setTimeout(() => { location.reload();  }, 1500);
+        }else{
+            $('#feed_e').slideDown();
+            $('#feed_e').html('<span style="color:red;">'+data+'</span>');
+            $('#add_property').attr("disabled", false);
+            $("#add_property").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
+        }
+		}            
+		});
+}));		
+		
+$(':input').focus(function(){
+	$('#feed_e').slideUp();
+})		
+		
+		
+	
+
+        		
+		// Function for Preview Image.
+$("#imgupload").on('click',function(){
+$("#upload").trigger('click'); 
+$(":file").change(function() {
+if (this.files && this.files[0]) {
+$('#imgupload').css({'width':'160px'});
+$('#imgupload').attr('src','images/loading.gif');
+ if (this.files && this.files[0] && this.files[0].name.match(/\.(jpg|jpeg|png|gif)$/) ) {
+var reader = new FileReader();
+reader.onload = imageIsLoaded;
+reader.readAsDataURL(this.files[0]);
+}else{
+alert('File not supported!');
+}
+}
+});
+});
+function imageIsLoaded(e) {
+$('#preview').css("display", "block");
+$('#previewimg').attr('src', e.target.result);
+$('#previewimg').show();
+$("#deleteimg").text('Remove');
+$("#deleteimg").show();
+$("#imgupload").hide();
+};
+// Function for Deleting Preview Image.
+$("#deleteimg").click(function(e) {
+e.preventDefault();
+$('.progress').hide();
+$("#deleteimg").text('Deleting..');
+$('#preview').css("display", "none");
+$('#upload').val("");
+$("#deleteimg").hide();
+$('#imgupload').attr('src','images/upload.jpg');
+$("#imgupload").show();
+	$("#mysubmit").text('UPLOAD DATA')
+	$('#mysubmit').attr("disabled", false);
+});
+
+
+
+    })
+</script>
 </body>
 
 </html>

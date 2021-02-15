@@ -93,8 +93,7 @@ $referrals->visited_page('myAccount',$myipAddress);
                     <!-- Edit Profile Welcome Text -->
                     <div class="widget welcome-message">
                         <h2>Edit profile</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                        <p>No address found. Kindly update your account below by adding official home or office address that will enable users and others locate you.</p>
                     </div>
                     <!-- Edit Personal Info -->
                     <div class="row">
@@ -110,34 +109,30 @@ $referrals->visited_page('myAccount',$myipAddress);
                                     <!-- First Name -->
                                     <div class="col-6 form-group">
                                         <label for="first-name">First Name</label>
-                                        <input type="text" value="<?php echo $power[2]->first_name; ?>" class="form-control" id="first-name">
+                                        <input id="first_name" type="text" value="<?php echo $power[2]->first_name; ?>" class="form-control" id="first-name">
                                     </div>
                                     <!-- Last Name -->
                                     <div class="col-6 form-group">
                                         <label for="last-name">Last Name</label>
-                                        <input type="text" value="<?php echo $power[2]->last_name; ?>" class="form-control" id="last-name">
+                                        <input id="last_name" type="text" value="<?php echo $power[2]->last_name; ?>" class="form-control" id="last-name">
                                     </div>
                                     
                                     <!-- First Name -->
                                     <div class="col-12 form-group">
                                         <label for="Phone No">Phone No</label>
-                                        <input type="text" value="<?php echo $power[2]->phone; ?>" class="form-control" id="Phone-no">
+                                        <input id="phone" type="text" value="<?php echo $power[2]->phone; ?>" class="form-control" id="Phone-no">
                                     </div>
                                     <!-- Comunity Name -->
                                     <div class="col-12 form-group">
                                         <label for="comunity-name">Address</label>
-                                        <textarea class="form-control" rows="4"  maxlength="300" placeholder="Address">
-                                        <?php echo $power[2]->address; ?>
-                                        </textarea>
+                                        <textarea id="address" class="form-control" rows="3"  maxlength="300" placeholder="Address"><?php echo $power[2]->address; ?> </textarea>
                                     </div>
 
-                                    <div class="col-12 form-group">
-                                        <!-- ALERT  DIV HERE -->
-                                        <div id="reg_error" class="alert alert-danger d-none py-1"></div>
-                                    </div>
                                     <!-- Submit button -->
                                     <div class="col-12 form-group">
-                                    <button class="btn btn-transparent py-2">Save My Changes</button>
+                                         <!-- ALERT  DIV HERE -->
+                                         <div id="user_err" class="alert alert-danger d-none"></div>
+                                    <button type="button" id="update_user" class="btn btn-primary active">Save My Changes</button>
                                     </div>
                                 </form>
                             </div>
@@ -168,6 +163,120 @@ Essential Scripts
 
 
     <script src="js/script.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#update_user').click(function(e) {
+            e.preventDefault()
+            var first_name = $("#first_name").val();
+            var last_name = $("#last_name").val();
+            var phone = $("#phone").val();
+            var address = $("#address").val();
+            $('#user_err').addClass('d-none');
+            let error = "";
+            let success = "";
+            $('#user_err').slideDown();
+            if (first_name.trim().length > 0) {
+              if (last_name.trim().length > 0) {
+                if (phone.trim().length > 0) {
+                 if (address.trim().length > 0) {
+                    $('#login').html('<i class="fa fa-spinner fa-spin"></i> Login...');
+                    $('#login').attr('disabled', 'disabled');
+
+                    $.ajax({
+                        method: 'POST',
+                        url: 'backend/api.php',
+                        cache: false,
+                        data: {
+                            account_update: 'account_update',
+                            first_name: first_name,
+                            last_name: last_name,
+                            phone: phone,
+                            address: address
+                        },
+                        success: function(data) {
+                            if (data == 1) {
+                                $('#login').html('<i class="fa fa-lock"></i> Login');
+                                $('#user_err').removeClass('d-none alert-danger')
+                                $('#user_err').addClass('alert-success')
+                                $('#user_err').html('<strong class="text-center">Updated Successful!</strong>');
+                                setTimeout(() => { location.reload();  }, 1500);
+                            } else if (data == 2) {
+								//ALLOW USERS NOT TO VERIFY EMAIL FOR NOW
+							                	window.location.replace("home");
+                                $('#login').html('<i class="fa fa-lock"></i> Login');
+                                $('#user_err').removeClass('d-none  alert-success')
+                                $('#user_err').addClass('alert-danger')
+                                $('#user_err').html('<strong class="text-center">Email not verified!</strong>');
+                                 
+                            } else {
+                                $('#login').html('<i class="fa fa-lock"></i> Login ');
+                                $('#user_err').removeClass('d-none  alert-success')
+                                $('#user_err').addClass('alert-danger')
+                                $('#user_err').html(data);
+                            }
+                            $('#login').attr('disabled',false);
+                        }
+                    })
+
+
+                        } else { error = 'Address is required!'; }
+                    } else { error = 'Phone is required!'; }
+                } else { error = 'Last Name is required!'; }
+            } else { error = 'First name is required!'; }
+
+            if (error.trim().length > 0) {
+                $('#user_err').removeClass('d-none alert-success')
+                $('#user_err').addClass('alert-danger')
+                $('#user_err').html(error);
+
+            }
+        })
+
+
+
+
+
+        //email validation ///
+        /////////////////////////////////////
+
+        $("#email_phone").blur(function() {
+            email = $('#email_phone').val();
+            if (email.trim().length > 0) {
+                if (IsEmail(email) == true) {
+
+                    $('#user_err').addClass('d-none')
+
+                } else {
+                    $('#user_err').removeClass('d-none alert-success')
+                $('#user_err').addClass('alert-danger')
+                    $('#user_err').html('Email not valid!');
+                }
+            } else {
+                 $('#user_err').removeClass('d-none alert-success')
+                $('#user_err').addClass('alert-danger')
+                $('#user_err').html('Email is required!');
+            }
+        })
+
+
+        function IsEmail(email) {
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(email)) {
+                return false;
+            } else {
+                return true;
+            }
+
+            //end of email validation ///
+            /////////////////////////////////////
+        }
+
+        $(':input').focus(function(){
+	    $('#user_err').slideUp();
+        })
+    })
+</script>
 
 </body>
 

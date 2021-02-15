@@ -150,6 +150,70 @@ if(isset($_POST['user_login_admin'])){
 
 
 
+
+if(isset($_POST["property_name"]) AND isset($_FILES['upload'])) {
+	if($_FILES['upload']['error'] != 4){
+			if($_FILES['upload']['error'] == 0){
+				if($_POST['property_name'] !=""){
+					if($_POST['property_price'] !=""){
+						if($_POST['location'] !=""){
+							if($_POST['description'] !=""){
+								if($_POST['category'] !=""){
+									if($_POST['type'] !=""){
+
+	$values = array();
+	foreach ($_POST as $key => $value){
+		if($key != 'send' && $key != 'upload'){
+			$values[$key] = "'".$obj->sql_clean($value)."'";
+			
+		}//var_dump($key);
+	}
+
+	$filetype = $_FILES['upload']['type'];
+		if(strstr($filetype, "image/")){
+
+	$picture = $obj->image_uploader($_FILES['upload']);
+	if($picture == 121){
+		echo 'File type not supported';
+		exit();
+	}else if($picture == 120){
+		echo 'File size is too big!';
+		exit();
+	}
+	
+	
+	$values['photo'] = "'".$picture."'";
+	$identity = $_SESSION['user_id_xxxxxxxx'].'-'.time();
+	$values['identity'] = "'".$identity."'";
+	$timer = time();
+	$values['timer'] = "'".$timer."'";
+	$values['status'] = 1;
+	$values['uid'] = $_SESSION['user_id_xxxxxxxx'];
+	$cols = "property_name,property_price,location,description,category,type,photo,identity,timer,status,uid";
+	$values = array_values($values);
+	echo $insert = $obj->insert_image('properties',$cols,$values);	
+		
+	}else { echo 'File not supported!'; }
+		
+										
+							}else { echo 'Property type is required!'; }
+						}else { echo 'Property category is required!'; }
+					}else { echo 'Property description is required!'; }
+				}else { echo 'Property location is required!'; }
+			}else { echo 'Property price is required!'; }
+			}else { echo 'Property name is required!'; }
+		}else { echo 'File not supported!'; }
+	}else { echo 'Please select Event photo to upload!'; }
+
+}
+
+
+
+
+
+
+
+
 ////////////ADD TESTIMONIAL//////////////
 if(isset($_POST['add_testimonial'])){
     $testimonial = trim($_POST['add_testimonial']);
@@ -179,6 +243,23 @@ if(isset($_POST['view_support_msg'])){
 
     }else{ echo 'Something went wrong,.. please refresh this page!'; }
 	}else{ echo 'Something went wrong,,, please refresh this page!'; }
+}
+
+
+
+
+////////////UPDATE USER ACCOUNT//////////////
+if(isset($_POST['account_update'])){
+    $first_name = $obj->sql_clean($_POST['first_name']);
+    $last_name = $obj->sql_clean($_POST['last_name']);
+    $phone = $obj->sql_clean($_POST['phone']);
+    $address = $obj->sql_clean($_POST['address']);
+	$uid = $obj->is_uid();
+		if(!empty($uid)){
+
+        echo $table = $obj->update_user($uid,$first_name,$last_name,$phone,$address);
+
+		}else{ echo 'Something went wrong, please refresh this page!'; }
 }
 
 
@@ -284,6 +365,187 @@ if(isset($_POST['edit_and_post'])){
 
 
 
+if(isset($_POST['limit_f'],$_POST['start_f'])){
+	$start = $obj->sql_clean($_POST['start_f']);
+	$limit = $obj->sql_clean($_POST['limit_f']);
+	if(isset($_SESSION['user_id_xxxxxxxx'])){
+	$uid = $_SESSION['user_id_xxxxxxxx'];
+	}else{return false; }
+
+		$gets = $obj->fetch_my_property($uid,$start,$limit);
+		
+	if($gets[0] > 0){
+		while($get = mysqli_fetch_object($gets[1])){
+		
+		
+echo '<div class="ad-listing-list mt-20">
+<div class="row p-lg-3 p-sm-5 p-4">
+	<div class="col-lg-4 align-self-center">
+		<a href="single.php">
+			<img src="'.$get->photo.'" class="img-fluid" alt="">
+		</a>
+	</div>
+	<div class="col-lg-8">
+		<div class="row">
+			<div class="col-lg-6 col-md-10">
+				<div class="ad-listing-content">
+					<div>
+						<a href="single.php" class="font-weight-bold text-uppercase">'.$get->property_name.'</a>
+					</div>
+					<ul class="list-inline mt-2 mb-3">
+						<li class="list-inline-item"><a href="category.php"> <i
+									class="fa fa-folder-open-o"></i> '.$get->category.'</a></li>
+						<li class="list-inline-item"><a href="category-2.php"><i
+									class="fa fa-calendar"></i> '.date("m-d-Y", $get->timer).'</a></li>
+					</ul>
+					<p class="pr-5" title="'.$get->description.'">'.substr($get->description,0,100).'<span>...</span></p>
+				</div>
+			</div>
+			<div class="col-lg-6 align-self-center">
+				<div class="product-ratings float-lg-right pb-3">
+					<ul class="list-inline">
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item"><i class="fa fa-star"></i></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>';
+	
+	}
+	}
+	}
+
+
+
+
+
+
+
+
+
+
+if(isset($_POST['limit_full_h'],$_POST['start_full_h'])){
+	$start = $obj->sql_clean($_POST['start_full_h']);
+	$limit = $obj->sql_clean($_POST['limit_full_h']);
+
+		$gets = $obj->fetch_all_property($start,$limit);
+		
+	if($gets[0] > 0){
+		while($get = mysqli_fetch_object($gets[1])){
+		
+		
+echo '<div class="col-lg-4 col-md-6">
+<!-- product card -->
+<div class="product-item bg-light">
+	<div class="card">
+		<div class="thumb-content">
+			<!-- <div class="price">$200</div> -->
+			<a href="single.php">
+				<img class="card-img-top img-fluid" src="'.$get->photo.'"
+					alt="Card image cap">
+			</a>
+		</div>
+		<div class="card-body">
+			<h4 class="card-title"><a href="single.php">'.$get->property_name.'</a></h4>
+			<ul class="list-inline product-meta">
+				<li class="list-inline-item">
+					<a href="single.php"><i
+							class="fa fa-folder-open-o"></i>'.$get->category.'</a>
+				</li>
+				<li class="list-inline-item">
+					<a href="category.php"><i class="fa fa-calendar"></i> '.date("m-d-Y", $get->timer).'</a>
+				</li>
+			</ul>
+			<p class="card-text" title="'.$get->description.'">'.substr($get->description,0,100).'<span>...</span></p>
+			<div class="product-ratings">
+				<ul class="list-inline">
+					<li class="list-inline-item selected"><i class="fa fa-star"></i>
+					</li>
+					<li class="list-inline-item selected"><i class="fa fa-star"></i>
+					</li>
+					<li class="list-inline-item selected"><i class="fa fa-star"></i>
+					</li>
+					<li class="list-inline-item selected"><i class="fa fa-star"></i>
+					</li>
+					<li class="list-inline-item"><i class="fa fa-star"></i></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+</div>';
+	
+	}
+	}
+	}
+
+
+
+
+
+
+
+
+
+
+if(isset($_POST['limit_full'],$_POST['start_full'])){
+	$start = $obj->sql_clean($_POST['start_full']);
+	$limit = $obj->sql_clean($_POST['limit_full']);
+
+		$gets = $obj->fetch_all_property($start,$limit);
+		
+	if($gets[0] > 0){
+		while($get = mysqli_fetch_object($gets[1])){
+		
+		
+echo '<div class="ad-listing-list mt-20">
+<div class="row p-lg-3 p-sm-5 p-4">
+	<div class="col-lg-4 align-self-center">
+		<a href="single.php">
+			<img src="'.$get->photo.'" class="img-fluid" alt="">
+		</a>
+	</div>
+	<div class="col-lg-8">
+		<div class="row">
+			<div class="col-lg-6 col-md-10">
+				<div class="ad-listing-content">
+					<div>
+						<a href="single.php" class="font-weight-bold text-uppercase">'.$get->property_name.'</a>
+					</div>
+					<ul class="list-inline mt-2 mb-3">
+						<li class="list-inline-item"><a href="category.php"> <i
+									class="fa fa-folder-open-o"></i> '.$get->category.'</a></li>
+						<li class="list-inline-item"><a href="category-2.php"><i
+									class="fa fa-calendar"></i> '.date("m-d-Y", $get->timer).'</a></li>
+					</ul>
+					<p class="pr-5" title="'.$get->description.'">'.substr($get->description,0,100).'<span>...</span></p>
+				</div>
+			</div>
+			<div class="col-lg-6 align-self-center">
+				<div class="product-ratings float-lg-right pb-3">
+					<ul class="list-inline">
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item selected"><i class="fa fa-star"></i></li>
+						<li class="list-inline-item"><i class="fa fa-star"></i></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>';
+	
+	}
+	}
+	}
 
 
 
@@ -405,98 +667,6 @@ if(isset($_POST['acc_varification'])){
 
 
 
-
-
-
-if(isset($_POST['confirm_transaction_id'])){
-    $transaction_id = trim($_POST['confirm_transaction_id']);
-	$payer_uid = trim($_POST['payer_uid']);
-	$uid = $obj->is_uid();
-    if($uid != $payer_uid){
-		if(!empty($uid)){
-			if(!empty($payer_uid) AND !empty($transaction_id)){
-			
-		echo $a = $obj->confirm_transaction($uid,$payer_uid,$transaction_id);
-		
-			}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Please refresh this page and try again!</strong>'; }
-		}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Please refresh this page and try again!</strong>'; }
-	}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Please refresh this page and try again!</strong>'; }
-}
-
-
-
-
-
-
-
-if(isset($_POST['i_want_to_pay_link'])){
-    $ref_url = trim($_POST['i_want_to_pay_link']);
-	$uid = $obj->is_uid();
-    if(!empty($uid)){
-		if(!empty($ref_url)){
-		if (filter_var($ref_url, FILTER_VALIDATE_URL)) {
-			$is_pending_link = $obj->is_payment_pending($uid);
-			if(!$is_pending_link){
-		echo $a = $obj->i_want_to_pay_link($uid,$ref_url);
-		
-		}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> You are not allowed to make new payment for now because you have pending payment already. <a href="'.$is_pending_link.'" class="text-warning font-weight-bold" style="cursor:pointer"><u>Click Here to view pending payment</u></a>. If you wish to proceed with new payment now, cancel pending payment or wait for user to confirm your payment.</strong>'; }
-		}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is invalid!</strong>'; }
-    }else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is required!</strong>'; }
-	}else{ echo 10; }
-}
-
-
-
-
-
-
-if(isset($_POST['cancel_request_to_pay_link'])){
-    $ref_url = trim($_POST['cancel_request_to_pay_link']);
-	$uid = $obj->is_uid();
-    if(!empty($uid)){
-		if(!empty($ref_url)){
-		if (filter_var($ref_url, FILTER_VALIDATE_URL)) {
-		echo $a = $obj->cancel_request_to_pay_link($uid,$ref_url);
-		}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is invalid!!</strong>'; }
-    }else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is required!!</strong>'; }
-	}else{ echo 10; }
-}
-
-
-
-
-
-
-
-
-if(isset($_POST['i_have_paid'])){
-    $ref_url = trim($_POST['i_have_paid']);
-	$uid = $obj->is_uid();
-    if(!empty($uid)){
-		if(!empty($ref_url)){
-		if (filter_var($ref_url, FILTER_VALIDATE_URL)) {
-		echo $a = $obj->i_have_paid($uid,$ref_url);
-		}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is invalid!!</strong>'; }
-    }else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is required!!</strong>'; }
-	}else{ echo 10; }
-}
-
-
-
-
-
-
-if(isset($_POST['cancel_i_hv_paid'])){
-    $ref_url = trim($_POST['cancel_i_hv_paid']);
-	$uid = $obj->is_uid();
-    if(!empty($uid)){
-		if(!empty($ref_url)){
-		if (filter_var($ref_url, FILTER_VALIDATE_URL)) {
-		echo $a = $obj->cancel_i_hv_paid($uid,$ref_url);
-		}else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is invalid!!</strong>'; }
-    }else{ echo '<strong class="text-white"><i class="fa fa-info-circle"></i> Referral link is required!!</strong>'; }
-	}else{ echo 10; }
-}
 
 
 

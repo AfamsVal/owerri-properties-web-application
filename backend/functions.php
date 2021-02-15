@@ -568,6 +568,195 @@ public function admin_update_user_amount($id,$uid,$amount,$max_ref_no,$bank_name
 
 
 
+	public function image_uploader($filefield){
+		$message = '';
+		$name = $filefield['name'];
+		$size = $filefield['size'];
+		$tmp = $filefield['tmp_name'];
+		if($size > 5242880){
+			$message = 120;
+			return $message;
+		}
+		$accepted = array('jpg','JPG','jpeg','PNG','png','GIF','gif','bmp');
+		//$filer = new finfo(FILEINFO_MIME_TYPE);
+		$ext = explode('.',$name);
+		$exten = end($ext);
+		//$verify = array_search($filer->file($tmp),$accepted);
+		if(!in_array($exten,$accepted)){
+			
+			return 121;
+		}
+		$store_name = substr(mt_rand(999999999,time()).$ext[0],0,15).'.'.$exten;
+		$location = 'uploads/'.$store_name;
+		$location1 = '../uploads/'.$store_name;
+		if($tmp){
+			if(move_uploaded_file($tmp,$location1)){
+				return $location;
+			}
+		}
+	}
+
+
+
+
+
+
+
+
+	public function insert_image($table,$cols,$values){
+		$con = $this->connect();
+   if(is_array($values)){
+	   $values = implode(',',$values);
+   }
+	   $stmt = "INSERT INTO {$table} ({$cols}) VALUES ({$values})";
+	   $query = mysqli_query($con,$stmt) or die (mysqli_error($con));
+	   if($query){
+		   $message = "1";
+	   }else{
+		   $message = "Something went wrong, please try again!";
+	   }
+	   return $message;
+   }
+
+
+
+
+
+   public function update_user($uid,$first_name,$last_name,$phone,$address){
+	$con = $this->connect();
+	$sql = "select phone from users where id = ?";
+	$query = $this->con->prepare($sql);
+	$query->bind_param('i',$uid);
+	$query->execute();
+	$query->store_result();
+	if($query->num_rows){
+		$query->bind_result($db_phone);
+		$query->fetch();
+		//check phone no here
+		$sql = "SELECT id FROM users WHERE phone = '$phone'";
+		$q = mysqli_query($con,$sql);
+		$count = mysqli_num_rows($q);
+		$fetch = mysqli_fetch_object($q);
+		/////////////////////////////////////
+		//return $fetch->id."dd".$uid;
+		if($count){
+		if($fetch->id === $uid){
+
+	mysqli_query($con,"UPDATE users SET first_name = '$first_name', last_name ='$last_name', phone ='$phone', address='$address' WHERE id = '$uid'");
+			return 1;			
+		
+		}else{ return "Sorry, this phone no is attached to another user!"; }	
+}else{
+	mysqli_query($con,"UPDATE users SET first_name = '$first_name', last_name ='$last_name', phone ='$phone', address='$address' WHERE id = '$uid'");
+			return 1;
+}
+	}else{
+		return "User not found, please refresh this page!";
+	}	
+}
+
+
+
+
+
+public function fetch_my_property($uid,$start,$limit){
+	$uid = $this->sql_clean($uid);
+	$start = $this->sql_clean($start);
+	$limit = $this->sql_clean($limit);
+	$con = $this->connect();
+	$query = mysqli_query($con,"SELECT * from properties WHERE status = '1' AND uid = '$uid' ORDER BY timer DESC LIMIT ".$start.", ".$limit."");
+	$count = mysqli_num_rows($query) or die(mysqli_error($con));
+	
+		return array($count,$query);
+
+	}
+
+
+
+
+
+
+
+public function fetch_all_property($start,$limit){
+	$start = $this->sql_clean($start);
+	$limit = $this->sql_clean($limit);
+	$con = $this->connect();
+	$query = mysqli_query($con,"SELECT * from properties WHERE status = '1' ORDER BY timer DESC LIMIT ".$start.", ".$limit."");
+	$count = mysqli_num_rows($query) or die(mysqli_error($con));
+	
+		return array($count,$query);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			
 	//////////////////EMAIL VERIFICATION HERE///////////////////////

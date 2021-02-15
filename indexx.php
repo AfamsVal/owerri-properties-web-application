@@ -52,7 +52,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 </head>
 
 <body class="body-wrapper">
-
+<div id="cover-spin"></div>
 
     <header>
         <div class="container">
@@ -145,7 +145,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 =            Popular deals section            =
 ============================================-->
 
-    <section class="popular-deals section bg-gray">
+   <!-- <section class="popular-deals section bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -155,16 +155,16 @@ $referrals->visited_page('Dashboard',$myipAddress);
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <!-- offer 01 -->
+             <div class="row">
+                <!-- offer 01 --
                 <div class="col-lg-12">
                     <div class="trending-ads-slide">
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
+                                        <!-- <div class="price">$200</div> --
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-1.jpg"
                                                 alt="Card image cap">
@@ -199,11 +199,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
+                                        <!-- <div class="price">$200</div> --
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
                                                 alt="Card image cap">
@@ -238,11 +238,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
+                                        <!-- <div class="price">$200</div> --
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-3.jpg"
                                                 alt="Card image cap">
@@ -277,11 +277,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> -->
+                                        <!-- <div class="price">$200</div> --
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
                                                 alt="Card image cap">
@@ -317,9 +317,9 @@ $referrals->visited_page('Dashboard',$myipAddress);
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
-    </section>
+    </section>-->
 
 
 
@@ -327,7 +327,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 =            All Category Section            =
 ===========================================-->
 
-    <section class=" section">
+    <section class=" section  bg-gray">
         <!-- Container Start -->
         <div class="container">
             <div class="row">
@@ -338,142 +338,8 @@ $referrals->visited_page('Dashboard',$myipAddress);
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
                     </div>
                     <div class="product-grid-list">
-                        <div class="row mt-30">
-                            <div class="col-lg-4 col-md-6">
-                                <!-- product card -->
-                                <div class="product-item bg-light">
-                                    <div class="card">
-                                        <div class="thumb-content">
-                                            <!-- <div class="price">$200</div> -->
-                                            <a href="single.php">
-                                                <img class="card-img-top img-fluid" src="images/products/products-1.jpg"
-                                                    alt="Card image cap">
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 class="card-title"><a href="single.php">Interior Design</a></h4>
-                                            <ul class="list-inline product-meta">
-                                                <li class="list-inline-item">
-                                                    <a href="single.php"><i
-                                                            class="fa fa-folder-open-o"></i>Electronics</a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="category.php"><i class="fa fa-calendar"></i>26th
-                                                        December</a>
-                                                </li>
-                                            </ul>
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Explicabo, aliquam!</p>
-                                            <div class="product-ratings">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <!-- product card -->
-                                <div class="product-item bg-light">
-                                    <div class="card">
-                                        <div class="thumb-content">
-                                            <!-- <div class="price">$200</div> -->
-                                            <a href="single.php">
-                                                <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
-                                                    alt="Card image cap">
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 class="card-title"><a href="single.php">Clean Toyota Car</a></h4>
-                                            <ul class="list-inline product-meta">
-                                                <li class="list-inline-item">
-                                                    <a href="single.php"><i
-                                                            class="fa fa-folder-open-o"></i>Furnitures</a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="category.php"><i class="fa fa-calendar"></i>26th
-                                                        December</a>
-                                                </li>
-                                            </ul>
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Explicabo, aliquam!</p>
-                                            <div class="product-ratings">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                            <div class="col-lg-4 col-md-6">
-                                <!-- product card -->
-                                <div class="product-item bg-light">
-                                    <div class="card">
-                                        <div class="thumb-content">
-                                            <!-- <div class="price">$200</div> -->
-                                            <a href="single.php">
-                                                <img class="card-img-top img-fluid" src="images/products/products-3.jpg"
-                                                    alt="Card image cap">
-                                            </a>
-                                        </div>
-                                        <div class="card-body">
-                                            <h4 class="card-title"><a href="single.php">3 Bedroom Flat</a></h4>
-                                            <ul class="list-inline product-meta">
-                                                <li class="list-inline-item">
-                                                    <a href="single.php"><i
-                                                            class="fa fa-folder-open-o"></i>Electronics</a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="category.php"><i class="fa fa-calendar"></i>26th
-                                                        December</a>
-                                                </li>
-                                            </ul>
-                                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Explicabo, aliquam!</p>
-                                            <div class="product-ratings">
-                                                <ul class="list-inline">
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item selected"><i class="fa fa-star"></i>
-                                                    </li>
-                                                    <li class="list-inline-item"><i class="fa fa-star"></i></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
+                        <div class="row mt-30"  id="myData">
+                           
                         </div>
                     </div>
                 </div>
@@ -493,12 +359,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
             <div class="row justify-content-md-center text-center">
                 <div class="col-md-8">
                     <div class="content-holder">
-                        <h2>Start today to get more exposure and
-                            grow your business</h2>
+                        <h2>Browse and sell properties around you with ease. We make it smart, fast and simple.</h2>
                         <ul class="list-inline mt-30">
-                            <li class="list-inline-item"><a class="btn btn-main" href="ad-listing.php">Add Listing</a>
+                            <li class="list-inline-item"><a class="btn btn-main" href="my-property">Add Listing</a>
                             </li>
-                            <li class="list-inline-item"><a class="btn btn-secondary" href="category.php">Browser
+                            <li class="list-inline-item"><a class="btn btn-secondary" href="properties">Browser
                                     Listing</a></li>
                         </ul>
                     </div>
@@ -528,7 +393,59 @@ Essential Scripts
 
 
     <script src="js/script.js"></script>
+    <script>
+    $(document).ready(function(){
 
+    //CODE FOR FETCHING OUT NEWS STARTS HERE
+    var limit_full_h = 10;
+	var start_full_h = 0;
+	var action = 'inactive';
+	function load_all_properties(limit_full_h,start_full_h){
+		$.ajax({
+			method:'POST',
+			url:'backend/api.php',
+			cache:false,
+			data:{limit_full_h,start_full_h},
+			success:function(data){
+				if(start_full_h == 0 && data != ""){ $('#myData').html(''); }
+				$('#myData').append(data);
+				if(data == ""){
+				if(start_full_h == 0){
+				$('.data_info').html('<button type="button" onclick="location.reload();" class="btn btn-turquoise">NO PROPERTY YET..</button>');
+					}else{
+				$('.data_info').html('<button type="button" onclick="location.reload();" class="btn btn-turquoise">NO MORE PROPERTY FOUND FOR NOW!!</button>');
+					}
+				action = 'active';
+				}else{
+					$('.data_info').html('<img src="images/loader.gif" alt="Loading..." style="height:50px;">');
+					action = 'inactive';
+				}
+				 $('#cover-spin').hide(0);
+			}
+		})
+	}
+	
+	setTimeout(function(){  $('#cover-spin').hide(0); },7000);
+	//End of function
+	
+		
+	if(action == 'inactive'){
+		action = 'active';
+		load_all_properties(limit_full_h,start_full_h);
+	}
+
+	$(window).scroll(function(){
+			
+		if($(window).scrollTop() + $(window).height() > $('.add_joke').height() && action == 'inactive'){
+			action = 'active';
+			start_full_h = start_full_h + limit_full_h;
+			load_all_properties(limit_full_h,start_full_h);
+		}
+
+	})
+	})
+
+</script>
 </body>
 
 </html>

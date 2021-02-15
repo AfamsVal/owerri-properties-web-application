@@ -82,9 +82,9 @@
         <!-- Social Icons -->
         <ul class="social-media-icons text-center text-lg-left">
           <li class="d-block" style="color:#bbb"><strong>Follow Us:</strong></li>
-          <li><a class="fa fa-facebook fa-lg" href="https://www.facebook.com/owerriproperty"></a></li>
-          <li><a class="fa fa-twitter fa-lg" href="https://www.twitter.com/owerriproperty"></a></li>
-          <li><a class="fa fa-instagram fa-lg" href="https://www.instagram.com/owerriproperty"></a></li>
+          <li><a class="fa fa-facebook fa-lg" target="_blank" href="https://www.facebook.com/owerriproperty"></a></li>
+          <li><a class="fa fa-twitter fa-lg" target="_blank" href="https://www.twitter.com/propertyowerri"></a></li>
+          <li><a class="fa fa-instagram fa-lg" target="_blank" href="https://www.instagram.com/owerriproperty"></a></li>
         </ul>
       </div>
     </div>
