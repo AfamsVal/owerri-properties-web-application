@@ -71,7 +71,7 @@ $referrals->visited_page('Terms&Condition',$myipAddress);
             <div class="row">
                 <div class="col-md-8 offset-md-2 text-center">
                     <!-- Title text -->
-                    <h3>Terms & Conditions</h3>
+                    <h3>Frequently Asked Questions</h3>
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@ $referrals->visited_page('Terms&Condition',$myipAddress);
             <div class="row">
                 <div class="col-lg-10 mx-auto p-0">
                     <div class="terms-condition-content">
-                        <h3 class="py-3">Owerri Property Terms & Condition</h3>
+                        <h3 class="py-3">About Owerri Property</h3>
                         <p>Please read the following carefully to understand how we will collect and use your personal
                             data in
                             relation to the Service. If you do not understand this policy, or do not accept any part of

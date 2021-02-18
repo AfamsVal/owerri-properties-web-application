@@ -53,8 +53,6 @@ if(isset($_POST['register'])){
 
 
 
-
-
 //////////////////ADNIM UPDATE USER AMOUNT DETAILS////////////
 ///////////////////////////////////////////////////////////
 if(isset($_POST['admin_update_user_amount'])){
@@ -313,6 +311,36 @@ if(isset($_POST['del_support_msg'])){
     }else{ echo 'Something went wrong,.. please refresh this page!'; }
 	}else{ echo 'Something went wrong,,, please refresh this page!'; }
 }
+
+
+
+
+
+
+
+
+
+if(isset($_POST['contactUs'])){
+	$name = trim($_POST['name']);
+    $phone = trim($_POST['phone']);
+    $subject = trim($_POST['subject']);
+    $message = trim($_POST['message']);
+
+	if(!empty($name)){
+		if(!empty($phone)){
+				if(!empty($subject)){
+				if(!empty($message)){
+			
+               echo $a = $obj->contact_us($name,$phone,$subject,$message);
+
+					}else{ echo 'Message is required!';}
+				} else{ echo 'Subject is required!';}
+			} else{ echo 'Phone is required!';}
+		}else{ echo 'Name is required!';}
+}
+
+
+
 
 
 

@@ -114,10 +114,12 @@ $referrals->visited_page('Dashboard',$myipAddress);
                                             </div>
                                             <div class="form-group col-lg-3 col-md-6">
                                                 <select class="w-100 form-control mt-lg-1 mt-md-2">
-                                                    <option>Category</option>
-                                                    <option value="1">Top rated</option>
-                                                    <option value="2">Lowest Price</option>
-                                                    <option value="4">Highest Price</option>
+                                                    <option value="All">Category</option>
+                                                    <option value="All">All</option>
+                                                    <option value="2">Cars</option>
+                                                    <option value="4">Land</option>
+                                                    <option value="4">House</option>
+                                                    <option value="4">Office</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-lg-3 col-md-6">

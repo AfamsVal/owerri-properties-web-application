@@ -391,6 +391,44 @@ public function new_member($first_name,$phone,$email,$state,$pwd){
 	
 	
 	
+
+
+
+
+
+
+
+//NEW MEMBER REGISTRATION
+public function contact_us($name,$phone,$subject,$message){
+	$con = $this->connect();
+	$name = $this->html_clean($name);
+	$email = "none@gmail.com";
+	$phone = $this->html_clean($phone);
+	$subject = $this->html_clean($subject);
+	$message = $this->html_clean($message);
+	$timer = time();
+	$status = 0;
+	
+		$sql = "INSERT INTO contact_us(name,email,phone,subject,message,status,timer) VALUES(?,?,?,?,?,?,?)";
+		$query = $this->con->prepare($sql);
+		$query->bind_param('sssssss',$name,$email,$phone,$subject,$message,$status,$timer);
+		$query->execute();
+		$query->store_result();
+		if($this->con->affected_rows){
+
+				return 1;
+			
+		}else{ return 'Something went wrong, please try again!'; }
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 ///////CHANGE ADMIN USER AMOUNT///////////////////
 public function admin_update_user_amount($id,$uid,$amount,$max_ref_no,$bank_name,$account_name,$account_no){

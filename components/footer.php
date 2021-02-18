@@ -24,6 +24,8 @@
             <li><a href="about">About Us</a></li>
 			<li><a href="properties">Properties</a></li>
 			<li><a href="marketplace">Marketplace</a></li>
+			<li><a href="terms-conditions">Terms & conditions</a></li>
+			<li><a href="faq">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -34,7 +36,7 @@
           <ul>
             <li>Imo State</li>
             <li>Nigeria</li>
-            <li><a href="store.php">+2348029261486</a></li>
+            <li><a href="store.php">+2348029361486</a></li>
 
 
 

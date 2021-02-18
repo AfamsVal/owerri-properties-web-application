@@ -83,38 +83,53 @@ $referrals->visited_page('ContactUs',$myipAddress);
     <section class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="contact-us-content p-4">
-                        <h5>Contact Us</h5>
-                        <h1 class="pt-3">Hello, what's on your mind?</h1>
-                        <p class="pt-3 pb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla elit dolor,
-                            blandit vel euismod ac, lentesque et dolor. Ut id tempus ipsum.</p>
-                    </div>
+            <div class="col-sm-6">
+            <div class="row text-center">
+
+                <div class="col-md-12 mb-5">
+                <img src="images/blog/contact.jpg" class="img-fluid w-100 rounded" alt="">
                 </div>
+
+                <div class="col-md-4">
+                    <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
+                    <p>Owerri, Imo subject,<br> Nigeria</p>
+                    
+                </div>
+
+                <div class="col-md-4">
+                    <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
+                    <p>+2348029361486</p>
+                </div>
+
+                <div class="col-md-4">
+                    <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-envelope"></i></a>
+                    <p>owerriproperty@gmail.com</p>
+                </div>
+            </div>
+        </div>
                 <div class="col-md-6">
                     <form action="#">
-                        <fieldset class="p-4">
+                        <fieldset class="px-4">
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-lg-6 py-2">
-                                        <input type="text" placeholder="Name *" class="form-control" required>
+                                        <input type="text" id="name" placeholder="Name *" class="form-control">
                                     </div>
                                     <div class="col-lg-6 pt-2">
-                                        <input type="email" placeholder="Email *" class="form-control" required>
+                                        <input type="text" id="phone" placeholder="Phone *" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <select name="" id="" class="form-control w-100">
-                                <option value="1">Select Category</option>
-                                <option value="1">Laptop</option>
-                                <option value="1">iPhone</option>
-                                <option value="1">Monitor</option>
-                                <option value="1">I need</option>
-                            </select>
-                            <textarea name="message" id="" placeholder="Message *"
+                            
+                            <input type="email" id="subject" placeholder="Subject *" class="form-control">
+                                    
+                            <textarea name="message" id="message" placeholder="Message *"
                                 class="border w-100 p-3 mt-3 mt-lg-4"></textarea>
                             <div class="btn-grounp">
-                                <button type="submit" class="btn btn-primary mt-2 float-right">SUBMIT</button>
+                             <!-- ALERT  DIV HERE -->
+                             <div id="reg_error" class="alert alert-danger d-none py-1 my-1"></div>
+
+                                <button type="submit" id="reg_now" class="btn btn-primary mt-2 float-right"><i class="fa fa-plus" aria-hidden="true"></i> SUBMIT</button>
                             </div>
                         </fieldset>
                     </form>
@@ -143,6 +158,96 @@ Essential Scripts
 
 
     <script src="js/script.js"></script>
+    <script>
+        $('#reg_now').click(function(e) {
+            e.preventDefault()
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var subject = $("#subject").val();
+            var message = $("#message").val();
+            let error = "";
+            let success = "";
+                        if (name.trim().length > 0) {
+                            if (phone.trim().length > 0) {
+                                if (subject.trim().length > 0) {
+                                    if (message.trim().length > 10) {
+                                                $('#reg_now').html(
+                                                    '<i class="fa fa-spinner fa-spin"></i> SUBMIT...'
+                                                );
+                                                $('#reg_now').attr('disabled', 'disabled');
+
+                                                $.ajax({
+                                                    method: 'POST',
+                                                    url: 'backend/api.php',
+                                                    cache: false,
+                                                    data: {
+                                                        contactUs: 'contactUs',
+                                                        name: name,
+                                                        phone: phone,
+                                                        subject: subject,
+                                                        message: message,
+                                                    },
+                                                    success: function(data) {
+                                                        if (data == 1) {
+                                                            $('#reg_now').html(
+                                                                '<i class="fa fa-plus" aria-hidden="true"></i> SUBMIT '
+                                                            );
+                                                            $('#reg_error').removeClass(
+                                                                'd-none alert-danger')
+                                                            $('#reg_error').addClass(
+                                                                'alert-success')
+                                                            $('#reg_error').html(
+                                                                '<strong>Sent Successfully!</strong>'
+                                                            );
+
+                                                            $("#name").val('');
+                                                            $("#phone").val('');
+                                                            $("#subject").val('');
+                                                            $("#message").val('');
+
+                                                        } else if(data !="") {
+
+                                                            $('#reg_now').html(
+                                                                '<i class="fa fa-unlock-alt"></i> Register Now '
+                                                            );
+                                                            $('#reg_error').removeClass(
+                                                                'd-none  alert-success')
+                                                            $('#reg_error').addClass(
+                                                                'alert-danger')
+                                                            $('#reg_error').html(data);
+                                                        }
+                                                        $('#reg_now').attr('disabled',
+                                                            false);
+                                                    }
+                                                })
+                                          
+                                        } else {
+                                            error = 'Message must contain min of 10 characters!';
+                                        }
+
+                            } else {
+                                error = 'Subject is required!!';
+                            }
+                        
+                    } else {
+                        error = 'Phone is required!';
+                    }
+             
+            } else {
+                error = 'Name is required!';
+            }
+
+            if (error.trim().length > 0) {
+                $('#reg_error').removeClass('d-none alert-success')
+                $('#reg_error').addClass('alert-danger')
+                $('#reg_error').html(error);
+
+                setTimeout(() => {
+                    $('#reg_error').addClass('d-none')
+                }, 2000);
+            }
+        })
+    </script>
 
 </body>
 

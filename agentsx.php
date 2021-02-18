@@ -91,11 +91,11 @@ $referrals->visited_page('Properties',$myipAddress);
             <div class="row">
                 <div class="col-md-12">
                     <div class="search-result bg-dark">
-                        <h2 class="text-white">Market Place</h2>
-                        <p class="text-white">124 Results found</p>
+                        <h2 class="text-white">Agent Page</h2>
+                        <p class="text-white">78 Results found</p>
                         <p>
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-2 active    ">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Create Market
+                        <i class="fa fa-plus" aria-hidden="true"></i> Become an Agent
                          </button>
                         </p>                        
                     </div>

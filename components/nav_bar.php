@@ -23,11 +23,12 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item <?php  if($path ==="home"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="home">Homes</a></li>
+							<li class="nav-item <?php  if($path ==="home"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="home">Home</a></li>
 							<li class="nav-item  <?php  if($path ==="about"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="about">About Us</a></li>
 							<li class="nav-item  <?php  if($path ==="properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="properties">Properties</a></li>
 							<li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="marketplace">Marketplace</a></li>
 							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="agents">Agents</a></li>	
+							<li class="nav-item <?php  if($path ==="contact-us"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="contact-us">Contact-Us</a></li>	
 						</ul>
 						<?php
 						
