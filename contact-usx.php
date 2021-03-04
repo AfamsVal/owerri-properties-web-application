@@ -23,14 +23,14 @@ $referrals->visited_page('ContactUs',$myipAddress);
 
     <!-- ** Basic Page Needs ** -->
     <meta charset="utf-8">
-    <title>Owerriproperty.com</title>
+    <title>Owerriproperty - contact us</title>
 
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Agency HTML Template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="author" content="Themefisher">
-    <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
+    <meta name="author" content="Afams Val">
+    <meta name="keywords" content="Owerri, Owerri property, contact us, contact support">
 
     <!-- favicon -->
     <link href="images/favicon.png" rel="shortcut icon">
@@ -99,11 +99,14 @@ $referrals->visited_page('ContactUs',$myipAddress);
                 <div class="col-md-4">
                     <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-phone"></i></a>
                     <p>+2348029361486</p>
+                    <p>+2349038751457</p>
                 </div>
 
                 <div class="col-md-4">
                     <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-envelope"></i></a>
                     <p>owerriproperty@gmail.com</p>
+                    <p>info@owerriproperty.com</p>
+                    <p>support@owerriproperty.com</p>
                 </div>
             </div>
         </div>

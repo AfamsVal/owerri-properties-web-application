@@ -197,23 +197,6 @@ return 1;
 
 
 
-public function check_blocked_user($uid,$frnd_id){
-	$uid = $this->sql_clean($uid);
-	$frnd_id = $this->sql_clean($frnd_id);
-	$con = $this->connect();
-	$sql = "SELECT * FROM blocked_users WHERE (uid = '$frnd_id' AND  frnd_id = '$uid') OR (uid = '$uid' AND  frnd_id = '$frnd_id')";
-	$query = mysqli_query($con,$sql);
-	$count = mysqli_num_rows($query);
-	if($count > 0){
-		return 1;
-	}
-}
-
-
-
-
-
-
 
 		
 		
@@ -475,12 +458,12 @@ public function admin_update_user_amount($id,$uid,$amount,$max_ref_no,$bank_name
 	
 	
 	
-	//////////////////USER LOGIN ADMIN HERE///////////////////////
+	//////////////////ADMIN USER LOGIN HERE///////////////////////
 	////////////////////////////////////
 
-	public function user_login_admin($email_phone,$pwd){
-		$phone = $this->html_clean($email_phone);
-		$sql = "SELECT id,password,status,is_blocked FROM users WHERE phone = ? AND is_support = '1'";
+	public function admin_user_login($phone,$pwd){
+		$phone = $this->html_clean($phone);
+		$sql = "SELECT id,password,status,is_blocked FROM users WHERE  status='10' AND phone = ? LIMIT 1";
 		$query = $this->con->prepare($sql);
 		$query->bind_param('s',$phone);
 		$query->execute();
@@ -492,9 +475,20 @@ public function admin_update_user_amount($id,$uid,$amount,$max_ref_no,$bank_name
 			if($password){
 				
 				if($is_blocked != 1){
+					$hasher = mt_rand(999999999,time());
+					$hasher1 = mt_rand(519999999,time());
+					$cookie = $uid.$hasher.$hasher1;
+					$sql = "UPDATE users SET cookie_id = ? where id = ?";
+					$query = $this->con->prepare($sql);
+					$query->bind_param('si',$cookie,$uid);
+					$query->execute();
+		
+			setcookie("property_cookie_",$cookie,time()+ (10 * 365 * 24 * 60 * 60), "/");	
 				$_SESSION['user_id_xxxxxxxx']= $uid;
+				$_SESSION['admin_id_xxxxxxxx']= $uid;
 				
 				return 1;
+				
 				}else{ return "This account has been blocked by Support!";}
 			}else{ return 'User details incorrect!';}
 		}else{ return 'User details incorrect';}
@@ -729,7 +723,18 @@ public function fetch_all_property($start,$limit){
 
 
 
-
+	
+	
+	
+	
+		
+public function select_all_users(){
+	$con = $this->connect();
+	$sql = "SELECT * FROM users";
+	$query = mysqli_query($con,$sql);
+	$count = mysqli_num_rows($query);
+	return array($count,$query);
+}
 
 
 
@@ -757,6 +762,68 @@ public function fetch_all_property($start,$limit){
 
 
    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1662,22 +1729,7 @@ public function change_referral_link_table($link,$uid){
 	}	
 	
 	
-	
-	
-	
-	
-		
-	public function system_user($id){
-		$con = $this->connect();
-		$sql = "SELECT * FROM system_users WHERE id = '$id'";
-		$query = mysqli_query($con,$sql);
-		$count = mysqli_num_rows($query);
-		$fetch = "";
-		if($count){
-			$fetch = mysqli_fetch_object($query);
-		}
-		return array($count,$query,$fetch);
-	}
+
 	
 
 

@@ -22,11 +22,8 @@ RewriteRule ^faq$ faqx.php [NC,L]
 RewriteRule ^terms-conditions$ terms_conditionsx.php [NC,L]
 RewriteRule ^referral/([0-9a-zA-Z@_.]+)/([0-9]+)$ referralx.php?link=$1&amount=$2 [NC,L]
 
-RewriteRule ^admin_login$ admin_loginx.php [NC,L]
-RewriteRule ^admin_login$ admin_loginx.php [NC,L]
-RewriteRule ^admin_login$ admin_loginx.php [NC,L]
-RewriteRule ^admin_login$ admin_loginx.php [NC,L]
-RewriteRule ^admin_dashboard$ admin_dashboardx.php [NC,L]
+RewriteRule ^admin-login$ admin_loginx.php [NC,L]
+RewriteRule ^admin-dashboard$ admin_dashboardx.php [NC,L]
 
 RewriteRule ^404 404.php [NC]
 ErrorDocument 404 /RealEstate/404.php

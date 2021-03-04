@@ -29,8 +29,8 @@ $referrals->visited_page('Terms&Condition',$myipAddress);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Agency HTML Template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="author" content="Themefisher">
-    <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
+    <meta name="author" content="Afams Val">
+    <meta name="keywords" content="Owerri, Owerri property terms and condition">
 
     <!-- favicon -->
     <link href="images/favicon.png" rel="shortcut icon">

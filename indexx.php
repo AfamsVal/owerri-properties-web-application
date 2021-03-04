@@ -24,15 +24,15 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
     <!-- ** Basic Page Needs #0062CC ** -->
     <meta charset="utf-8">
-    <title>Owerriproperty.com</title>
+    <title>Owerriproperty - buy and sell different kinds of properties</title>
 
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description"
-        content="Join the millions of users in who buy and sell different kinds of properties everyday in local communities around you">
+        content="Join the millions of users in Owerri who buy and sell different kinds of properties everyday">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="author" content="Themefisher">
-    <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
+    <meta name="author" content="Afams Val">
+    <meta name="keywords" content="Owerri, Owerri property, Owerri houses, Owerri house to let, House to let in Owerri, Land for sale in Owerri, Property, Imo property, Imo, Lands, Houses">
 
     <!-- favicon -->
     <link href="images/favicon.png" rel="shortcut icon">
@@ -108,24 +108,40 @@ $referrals->visited_page('Dashboard',$myipAddress);
                                 <div class="col-lg-12 col-md-12 align-content-center">
                                     <form>
                                         <div class="form-row">
-                                            <div class="form-group col-xl-4 col-lg-3 col-md-6">
-                                                <input type="text" class="form-control my-2 my-lg-1" id="inputtext4"
-                                                    placeholder="What are you looking for">
-                                            </div>
+                                            
                                             <div class="form-group col-lg-3 col-md-6">
                                                 <select class="w-100 form-control mt-lg-1 mt-md-2">
-                                                    <option value="All">Category</option>
-                                                    <option value="All">All</option>
-                                                    <option value="2">Cars</option>
-                                                    <option value="4">Land</option>
-                                                    <option value="4">House</option>
-                                                    <option value="4">Office</option>
+                                                    <option value="All">LET PROPERTY</option>
+                                                    <option value="All">1 BEDROOM FLAT</option>
+                                                    <option value="2">2 BEDROOM FLAT</option>
+                                                    <option value="4">3 BEDROOM FLAT</option>
+                                                    <option value="4">4 BEDROOM FLAT</option>
+                                                    <option value="4">OTHERS</option>
                                                 </select>
                                             </div>
+                                            
                                             <div class="form-group col-lg-3 col-md-6">
-                                                <input type="text" class="form-control my-2 my-lg-1" id="inputLocation4"
-                                                    placeholder="Location">
+                                                <select class="w-100 form-control mt-lg-1 mt-md-2">
+                                                    <option value="All">LAND FOR SALE</option>
+                                                    <option value="All">1 PLOT</option>
+                                                    <option value="2">2 PLOTS</option>
+                                                    <option value="4">3 PLOTS</option>
+                                                    <option value="4">4 PLOTS</option>
+                                                    <option value="4">OTHERS</option>
+                                                </select>
                                             </div>
+
+                                            <div class="form-group col-lg-3 col-md-6">
+                                                <select class="w-100 form-control mt-lg-1 mt-md-2">
+                                                    <option value="All">PRICE RANCE</option>
+                                                    <option value="All">50,000 - 499,999</option>
+                                                    <option value="2">500,000 - 999,999</option>
+                                                    <option value="4">1,000,000 - 2,499,000</option>
+                                                    <option value="4">2,500,000 - 4,999,000</option>
+                                                    <option value="4">5,000,000 - Above</option>
+                                                </select>
+                                            </div>
+                                            
                                             <div class="form-group col-xl-2 col-lg-3 col-md-6 align-self-center">
                                                 <button type="submit" class="btn btn-primary active w-100">Search
                                                     Now</button>
@@ -147,26 +163,25 @@ $referrals->visited_page('Dashboard',$myipAddress);
 =            Popular deals section            =
 ============================================-->
 
-   <!-- <section class="popular-deals section bg-gray">
+    <section class="popular-deals section bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
                         <h2>Trending Adds</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, magnam.</p>
+                        <p>Buy from one of our tending products today.</p>
                     </div>
                 </div>
             </div>
              <div class="row">
-                <!-- offer 01 --
+                <!-- offer 01 -->
                 <div class="col-lg-12">
                     <div class="trending-ads-slide">
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> --
+                                         <div class="price">Verified</div>
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-1.jpg"
                                                 alt="Card image cap">
@@ -201,11 +216,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card --
+                            <!-- product card -->
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> --
+                                         <div class="price">Verified</div>
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
                                                 alt="Card image cap">
@@ -240,11 +255,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card --
+                            <!-- product card -->
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> --
+                                         <div class="price">Verified</div>
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-3.jpg"
                                                 alt="Card image cap">
@@ -279,11 +294,11 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card --
+                            <!-- product card -->
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
-                                        <!-- <div class="price">$200</div> --
+                                         <div class="price">Pending</div>
                                         <a href="single.php">
                                             <img class="card-img-top img-fluid" src="images/products/products-2.jpg"
                                                 alt="Card image cap">
@@ -320,24 +335,34 @@ $referrals->visited_page('Dashboard',$myipAddress);
                     </div>
                 </div>
             </div> 
-        </div>
-    </section>-->
 
+            <div class="row mt-5  bg-light py-3">
+                <div class="col-lg-6 pt-5 pt-lg-0">
+                    <div class="about-content pt-4">
+                        <h1 class="font-weight-bold" style="line-height:50px">Are you looking for a property to buy anywhere in Owerri?</h1>
+                        <h3 class="mt-4" style="line-height:30px;">Welcome to Owerriproperty! This is Owerri foremost real estate marketplace. It is the largest clearing house for everyone in the real estate business in Owerri. It is the ideal place for the smart man or lady looking for a suitable home within this fast-growing and beautiful city in the eastern Nigerian heartland.</h3>
+                        <button type="submit" class="btn btn-primary active w-100 mt-5">Search for Property</button>
+                        </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-img">
+                        <img src="images/why-us.jpg" class="img-fluid w-100 rounded" alt="">
+                    </div>
+                </div>
+            </div>
 
 
     <!--==========================================
 =            All Category Section            =
 ===========================================-->
 
-    <section class=" section  bg-gray">
-        <!-- Container Start -->
-        <div class="container">
-            <div class="row">
+
+            <div class="row py-2" style="margin-top:80px;">
                 <div class="col-12">
                     <!-- Section title -->
                     <div class="section-title">
                         <h2>All Categories</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, provident!</p>
+                        <p>Feel free to go through all of our categories for better decision!</p>
                     </div>
                     <div class="product-grid-list">
                         <div class="row mt-30"  id="myData">

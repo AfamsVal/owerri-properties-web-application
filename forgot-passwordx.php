@@ -24,14 +24,14 @@ $referrals->visited_page('ForgotPwd',$myipAddress);
 
     <!-- ** Basic Page Needs ** -->
     <meta charset="utf-8">
-    <title>Owerriproperty.com</title>
+    <title>Owerriproperty - Forgot Password</title>
 
     <!-- ** Mobile Specific Metas ** -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Agency HTML Template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="author" content="Themefisher">
-    <meta name="generator" content="Themefisher Classified Marketplace Template v1.0">
+    <meta name="author" content="Afams Val">
+    <meta name="keywords" content="Owerri, Owerri property, forgot password">
 
     <!-- favicon -->
     <link href="images/favicon.png" rel="shortcut icon">

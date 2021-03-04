@@ -130,14 +130,14 @@ if(isset($_POST['user_login'])){
 
 
 
-//////USER LOGIN///////////////
-if(isset($_POST['user_login_admin'])){
-    $email_phone = trim($_POST['email_phone']);
+//////ADMIN USER LOGIN///////////////
+if(isset($_POST['admin_user_login'])){
+    $phone = trim($_POST['phone']);
     $password = $_POST['password'];
-    if(!empty($email_phone)){
+    if(!empty($phone)){
         if(!empty($password)){
 
-          echo $login = $obj->user_login_admin($email_phone,$password);
+          echo $login = $obj->admin_user_login($phone,$password);
 
         }else{ echo 'Password is required!!'; }
     }else{ echo 'Email or phone number is required!!'; }
@@ -409,6 +409,7 @@ if(isset($_POST['limit_f'],$_POST['start_f'])){
 echo '<div class="ad-listing-list mt-20">
 <div class="row p-lg-3 p-sm-5 p-4">
 	<div class="col-lg-4 align-self-center">
+	<div class="price">Pending</div>
 		<a href="single.php">
 			<img src="'.$get->photo.'" class="img-fluid" alt="">
 		</a>
@@ -473,7 +474,7 @@ echo '<div class="col-lg-4 col-md-6">
 <div class="product-item bg-light">
 	<div class="card">
 		<div class="thumb-content">
-			<!-- <div class="price">$200</div> -->
+		<div class="price">Pending</div>
 			<a href="single.php">
 				<img class="card-img-top img-fluid" src="'.$get->photo.'"
 					alt="Card image cap">

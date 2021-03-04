@@ -3,19 +3,18 @@
   <!-- Container Start -->
   <div class="container">
     <div class="row">
-      <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0 mb-4 mb-lg-0">
+      <div class="col-lg-4 col-md-7 offset-md-1 offset-lg-0 mb-4 mb-lg-0">
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
           <img src="images/logo-footer.png" alt="logo">
           <!-- description -->
-          <p class="alt-color">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p class="alt-color text-justify">Owerriproperty is adapted for every genuine real estate agent who wants to quickly lease out an apartment or property under their care.
+It is the pioneer auction house for every property owner and landlord who has just built the house of his dreams and is desirous of filling out vacant flats or selling off land.</p>
         </div>
       </div>
       <!-- Link list -->
-      <div class="col-lg-2 offset-lg-1 col-md-3 col-6 mb-4 mb-lg-0">
+      <div class="col-lg-2 col-md-3 col-6 mb-4 mb-lg-0">
         <div class="block">
           <h4>Site Pages</h4>
           <ul>
@@ -26,6 +25,13 @@
 			<li><a href="marketplace">Marketplace</a></li>
 			<li><a href="terms-conditions">Terms & conditions</a></li>
 			<li><a href="faq">FAQ</a></li>
+      <?php
+      $server = explode("/",$_SERVER['REQUEST_URI']);
+      $path = end($server);
+      if($path === "login" || $path === "admin-login"){
+        echo '<li><a href="admin-login">Admin</a></li>';
+      }
+      ?>
           </ul>
         </div>
       </div>
@@ -37,6 +43,7 @@
             <li>Imo State</li>
             <li>Nigeria</li>
             <li><a href="store.php">+2348029361486</a></li>
+            <li><a href="store.php">+2349038751457</a></li>
 
 
 

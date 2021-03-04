@@ -24,11 +24,11 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
 							<li class="nav-item <?php  if($path ==="home"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="home">Home</a></li>
-							<li class="nav-item  <?php  if($path ==="about"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="about">About Us</a></li>
-							<li class="nav-item  <?php  if($path ==="properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="properties">Properties</a></li>
-							<li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="marketplace">Marketplace</a></li>
-							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="agents">Agents</a></li>	
-							<li class="nav-item <?php  if($path ==="contact-us"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="contact-us">Contact-Us</a></li>	
+							<li class="nav-item  <?php  if($path ==="about"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="about">About Us</a></li>
+							<li class="nav-item  <?php  if($path ==="properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="properties">Properties</a></li>
+							<li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="marketplace">Marketplace</a></li>
+							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="agents">Agents</a></li>	
+							<li class="nav-item <?php  if($path ==="contact-us"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="contact-us">Contact-Us</a></li>	
 						</ul>
 						<?php
 						
@@ -39,7 +39,7 @@
 							<li class="nav-item">
 						<div class="dropdown">
 						<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-						<strong>'.$power[2]->first_name.'</strong>
+						<strong>'.substr($power[2]->first_name,0,11).'</strong>
 						</button>
 						<div class="dropdown-menu">
 						  <a class="dropdown-item" href="my-account">My Account</a>

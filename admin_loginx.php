@@ -22,14 +22,14 @@ $referrals->visited_page('Login',$myipAddress);
 
   <!-- ** Basic Page Needs ** -->
   <meta charset="utf-8">
-  <title>Owerriproperty - Login</title>
+  <title>Owerriproperty - Admin Log</title>
 
   <!-- ** Mobile Specific Metas ** -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Agency HTML Template">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <meta name="author" content="Afams Val">
-  <meta name="keywords" content="Owerri, Owerri property login">
+  <meta name="keywords" content="Admin log">
 
   <!-- favicon -->
   <link href="images/favicon.png" rel="shortcut icon">
@@ -66,12 +66,12 @@ $referrals->visited_page('Login',$myipAddress);
     <div class="row justify-content-center">
       <div class="col-lg-5 col-md-8 align-item-center">
         <div class="border">
-          <h3 class="bg-gray p-4">Login Now</h3>
+          <h3 class="bg-gray p-4">Admin Login</h3>
            <!-- ALERT  DIV HERE -->
            <div id="user_err" class="alert alert-danger d-none py-1 mx-2"></div>
           <form action="#">
             <fieldset class="p-4">
-              <input class="form-control mb-3" type="text" id="email_phone" placeholder="E-mail or Phone">
+              <input class="form-control mb-3" type="text" id="phone" placeholder="E-mail or Phone">
               <input class="form-control mb-3" type="password" id="password" placeholder="Password">
               <div class="loggedin-forgot">
                 <input type="checkbox" id="keep-me-logged-in">
@@ -79,7 +79,6 @@ $referrals->visited_page('Login',$myipAddress);
               </div>
               <button type="submit" id="login" class="btn btn-primary font-weight-bold mt-3">Log in</button>
               <a class="mt-3 d-block text-primary" href="forgot-password">Forgot Password?</a>
-              <a class="mt-3 d-inline-block text-primary" href="register">Register Now</a>
             </fieldset>
           </form>
         </div>
@@ -111,12 +110,12 @@ Essential Scripts
     $(document).ready(function() {
         $('#login').click(function(e) {
             e.preventDefault()
-            var email_phone = $("#email_phone").val();
+            var phone = $("#phone").val();
             var password = $("#password").val();
             $('#user_err').addClass('d-none');
             let error = "";
             let success = "";
-            if (email_phone.trim().length > 0) {
+            if (phone.trim().length > 0) {
                 if (password.trim().length > 0) {
                     $('#login').html('<i class="fa fa-spinner fa-spin"></i> Login...');
                     $('#login').attr('disabled', 'disabled');
@@ -126,8 +125,8 @@ Essential Scripts
                         url: 'backend/api.php',
                         cache: false,
                         data: {
-                            user_login: 'user_login',
-                            email_phone: email_phone,
+                            admin_user_login: 'admin_user_login',
+                            phone: phone,
                             password: password
                         },
                         success: function(data) {
@@ -136,14 +135,14 @@ Essential Scripts
                                 $('#user_err').removeClass('d-none alert-danger')
                                 $('#user_err').addClass('alert-success')
                                 $('#user_err').html('<strong class="text-center">Login Successful!</strong>');
-                                 window.location.replace("home");
+                                 window.location.replace("admin-dashboard");
                             } else if (data == 2) {
 								//ALLOW USERS NOT TO VERIFY EMAIL FOR NOW
 							                	window.location.replace("home");
                                 $('#login').html('<i class="fa fa-lock"></i> Login');
                                 $('#user_err').removeClass('d-none  alert-success')
                                 $('#user_err').addClass('alert-danger')
-                                $('#user_err').html('<strong class="text-center">Email not verified!</strong>');
+                                $('#user_err').html('<strong class="text-center">User not verified!</strong>');
                                  
                             } else if(data !="") {
                                 $('#login').html('<i class="fa fa-lock"></i> Login ');
