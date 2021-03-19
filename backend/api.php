@@ -410,7 +410,7 @@ echo '<div class="ad-listing-list mt-20">
 <div class="row p-lg-3 p-sm-5 p-4">
 	<div class="col-lg-4 align-self-center">
 	<div class="price">Pending</div>
-		<a href="single.php">
+		<a href="single/'.$get->id.'">
 			<img src="'.$get->photo.'" class="img-fluid" alt="">
 		</a>
 	</div>
@@ -419,7 +419,7 @@ echo '<div class="ad-listing-list mt-20">
 			<div class="col-lg-6 col-md-10">
 				<div class="ad-listing-content">
 					<div>
-						<a href="single.php" class="font-weight-bold text-uppercase">'.$get->property_name.'</a>
+						<a href="single/'.$get->id.'" class="font-weight-bold text-uppercase">'.$get->property_name.'</a>
 					</div>
 					<ul class="list-inline mt-2 mb-3">
 						<li class="list-inline-item"><a href="category.php"> <i
@@ -475,16 +475,16 @@ echo '<div class="col-lg-4 col-md-6">
 	<div class="card">
 		<div class="thumb-content">
 		<div class="price">Pending</div>
-			<a href="single.php">
+			<a href="single/'.$get->id.'">
 				<img class="card-img-top img-fluid" src="'.$get->photo.'"
 					alt="Card image cap">
 			</a>
 		</div>
 		<div class="card-body">
-			<h4 class="card-title"><a href="single.php">'.$get->property_name.'</a></h4>
+			<h4 class="card-title"><a href="single/'.$get->id.'">'.$get->property_name.'</a></h4>
 			<ul class="list-inline product-meta">
 				<li class="list-inline-item">
-					<a href="single.php"><i
+					<a href="single/'.$get->id.'"><i
 							class="fa fa-folder-open-o"></i>'.$get->category.'</a>
 				</li>
 				<li class="list-inline-item">
@@ -536,7 +536,7 @@ if(isset($_POST['limit_full'],$_POST['start_full'])){
 echo '<div class="ad-listing-list mt-20">
 <div class="row p-lg-3 p-sm-5 p-4">
 	<div class="col-lg-4 align-self-center">
-		<a href="single.php">
+		<a href="single/'.$get->id.'">
 			<img src="'.$get->photo.'" class="img-fluid" alt="">
 		</a>
 	</div>
@@ -545,7 +545,7 @@ echo '<div class="ad-listing-list mt-20">
 			<div class="col-lg-6 col-md-10">
 				<div class="ad-listing-content">
 					<div>
-						<a href="single.php" class="font-weight-bold text-uppercase">'.$get->property_name.'</a>
+						<a href="single/'.$get->id.'" class="font-weight-bold text-uppercase">'.$get->property_name.'</a>
 					</div>
 					<ul class="list-inline mt-2 mb-3">
 						<li class="list-inline-item"><a href="category.php"> <i

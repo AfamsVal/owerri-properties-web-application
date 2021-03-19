@@ -13,6 +13,9 @@ if($uid){
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('404',$myipAddress);
 
+
+$host =  $_SERVER["HTTP_HOST"];
+	$host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.owerriproperty.com/"
 ?>
 
 
@@ -39,13 +42,13 @@ $referrals->visited_page('404',$myipAddress);
     <!-- 
   Essential stylesheets
   =====================================-->
-    <link href="plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
-    <link href="plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
-    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="plugins/slick/slick.css" rel="stylesheet">
-    <link href="plugins/slick/slick-theme.css" rel="stylesheet">
-    <link href="plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>plugins/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>plugins/bootstrap/bootstrap-slider.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>plugins/slick/slick.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>plugins/slick/slick-theme.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>plugins/jquery-nice-select/css/nice-select.css" rel="stylesheet">
+    <link href="<?php echo $host; ?>css/style.css" rel="stylesheet">
 
 </head>
 
@@ -66,10 +69,10 @@ $referrals->visited_page('404',$myipAddress);
             <div class="row">
                 <div class="col-md-6 text-center mx-auto">
                     <div class="404-img">
-                        <img src="images/404/404.png" class="img-fluid" alt="404">
+                        <img src="<?php echo $host; ?>images/404/404.png" class="img-fluid" alt="404">
                     </div>
                     <div class="404-content">
-                        <h1 class="display-1 pt-1 pb-2">Oops</h1>
+                        <h1 class="display-1 pt-1 pb-2">Opps!</h1>
                         <p class="px-3 pb-2 text-dark">Something went wrong,we can't find the page that you are looking
                             for :(But
                             there is a lot more for you!</p>

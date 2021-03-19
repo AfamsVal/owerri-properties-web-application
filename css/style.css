@@ -50,6 +50,14 @@ p {
   color: #888;
 }
 
+.text-gray{
+  color:#aaa;
+}
+
+.bg-gray{
+  background-color: #aaa;
+}
+
 label {
   font-size: 14px;
   letter-spacing: 0;
@@ -1790,7 +1798,7 @@ ul.pagination .active a {
 
 .widget .widget-header {
   display: block;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 20px;
   padding-bottom: 10px;

@@ -13,6 +13,10 @@ if($uid){
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('Dashboard',$myipAddress);
 
+
+$host =  $_SERVER["HTTP_HOST"];
+$host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.owerriproperty.com/"
+
 ?>
 
 
@@ -35,7 +39,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
     <meta name="keywords" content="Owerri, Owerri property, Owerri houses, Owerri house to let, House to let in Owerri, Land for sale in Owerri, Property, Imo property, Imo, Lands, Houses">
 
     <!-- favicon -->
-    <link href="images/favicon.png" rel="shortcut icon">
+    <link href="<?php echo $host; ?>images/favicon.png" rel="shortcut icon">
 
     <!-- 
   Essential stylesheets
@@ -165,7 +169,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
     <section class="popular-deals section bg-gray">
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-12">
                     <div class="section-title">
                         <h2>Trending Adds</h2>
@@ -174,7 +178,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
                 </div>
             </div>
              <div class="row">
-                <!-- offer 01 -->
+                <!-- offer 01 --
                 <div class="col-lg-12">
                     <div class="trending-ads-slide">
                         <div class="col-sm-12 col-lg-4">
@@ -216,7 +220,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
@@ -255,7 +259,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
@@ -294,7 +298,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card -->
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
@@ -334,7 +338,7 @@ $referrals->visited_page('Dashboard',$myipAddress);
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>  -->
 
             <div class="row mt-5  bg-light py-3">
                 <div class="col-lg-6 pt-5 pt-lg-0">

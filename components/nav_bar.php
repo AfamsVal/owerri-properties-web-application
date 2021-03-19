@@ -11,6 +11,10 @@
 	
 	$server = explode("/",$_SERVER['REQUEST_URI']);
 	$path = end($server);
+	
+
+	$host =  $_SERVER["HTTP_HOST"];
+	$host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.owerriproperty.com/"
 
 	?>
 	<nav class="navbar navbar-expand-md navbar-light px-4 bg-light fixed-top navigation">
@@ -23,12 +27,12 @@
 					</button>
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul class="navbar-nav ml-auto main-nav ">
-							<li class="nav-item <?php  if($path ==="home"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="home">Home</a></li>
-							<li class="nav-item  <?php  if($path ==="about"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="about">About Us</a></li>
-							<li class="nav-item  <?php  if($path ==="properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="properties">Properties</a></li>
-							<li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="marketplace">Marketplace</a></li>
-							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="agents">Agents</a></li>	
-							<li class="nav-item <?php  if($path ==="contact-us"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="contact-us">Contact-Us</a></li>	
+							<li class="nav-item <?php  if($path ==="home"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>home">Home</a></li>
+							<li class="nav-item  <?php  if($path ==="about"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="<?php echo $host; ?>about">About Us</a></li>
+							<li class="nav-item  <?php  if($path ==="properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="<?php echo $host; ?>properties">Properties</a></li>
+							<li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="<?php echo $host; ?>marketplace">Marketplace</a></li>
+							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="<?php echo $host; ?>agents">Agents</a></li>	
+							<li class="nav-item <?php  if($path ==="contact-us"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" target="_blank" href="<?php echo $host; ?>contact-us">Contact-Us</a></li>	
 						</ul>
 						<?php
 						
