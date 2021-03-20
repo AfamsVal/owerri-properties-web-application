@@ -18,6 +18,11 @@ if($uid){
     $power = $referrals->power('users',$uid);
 }
 
+$user = $referrals->power('users',$property_details[2]->uid);
+$first_name = $user[2]->first_name;
+$last_name = $user[2]->last_name;
+$phone = $user[2]->phone;
+
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('Blog',$myipAddress);
 }else{
@@ -45,7 +50,7 @@ $referrals->visited_page('Blog',$myipAddress);
     <meta name="keywords" content="">
 
     <!-- favicon -->
-    <link href="images/favicon.png" rel="shortcut icon">
+    <link href="../images/favicon.png" rel="shortcut icon">
 
     <!-- 
   Essential stylesheets
@@ -81,17 +86,17 @@ $referrals->visited_page('Blog',$myipAddress);
             <div class="row">
                 <div class="col-lg-8">
                     <article class="single-post">
-                        <h2>Donec id dolor in erat imperdiet.</h2>
+                        <h2><?php echo $property_details[2]->property_name; ?></h2>
                         <ul class="list-inline">
-                            <li class="list-inline-item">by <a href="user-profile.php">Admin</a></li>
-                            <li class="list-inline-item">Nov 22, 2016</li>
+                            <li class="list-inline-item">by <a href="user-profile.php"><?php echo $first_name.' '.$last_name; ?></a></li>
+                            <li class="list-inline-item"><?php echo $referrals->time_elapsed_string($property_details[2]->timer); ?></li>
                         </ul>
                         <div id="carousel-example-2" class="carousel slide carousel-fade" data-ride="carousel">
     <!--Slides-->
     <div class="carousel-inner bg-gray" role="listbox">
         <div class="carousel-item active">
             <div class="view">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
+                <img class="d-block w-100" src="../<?php echo $property_details[2]->photo; ?>" alt="First slide">
                 <div class="mask rgba-black-light"></div>
             </div>
             <div class="carousel-caption">
@@ -99,10 +104,9 @@ $referrals->visited_page('Blog',$myipAddress);
                 <p>First text</p>
             </div>
         </div>
-        <div class="carousel-item">
-            <!--Mask color-->
+        <!-- <div class="carousel-item">
             <div class="view">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
+                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="Second slide">
                 <div class="mask rgba-black-strong"></div>
             </div>
             <div class="carousel-caption">
@@ -111,7 +115,6 @@ $referrals->visited_page('Blog',$myipAddress);
             </div>
         </div>
         <div class="carousel-item">
-            <!--Mask color-->
             <div class="view">
                 <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
                 <div class="mask rgba-black-slight"></div>
@@ -120,10 +123,9 @@ $referrals->visited_page('Blog',$myipAddress);
                 <h3 class="h3-responsive">Slight mask</h3>
                 <p>Third text</p>
             </div>
-        </div>
+        </div> -->
     </div>
-    <!--/.Slides-->
-    <!--Controls-->
+
     <a class="carousel-control-prev" href="#carousel-example-2" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -137,19 +139,12 @@ $referrals->visited_page('Blog',$myipAddress);
 <div class="pb-3 bg-gray mb-3">
                         <h2 class="text-center">Interested in this property?</h2>
 
-                        <h3 class="text-center">Call <span class="font-weight-bold py-1 px-1 text-info">07067571189</span></h3>
+                        <h3 class="text-center">Call <span class="font-weight-bold py-1 px-1 text-info"><?php echo $phone; ?></span></h3>
                         </div>
 
                         <div>
                         <h3>Property Description</h3>    
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod tempor incididunt
-                            labore et dolore
-                            magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip.ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat
-                            nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-                            sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                        <?php echo $property_details[2]->description; ?></div>
 
                         <div class="pt-3">
                         <h3>Property Details</h3> 
@@ -158,28 +153,22 @@ $referrals->visited_page('Blog',$myipAddress);
     <table class="table table-hover">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>Type</th>
+        <td><?php echo $property_details[2]->type; ?></td>
+        </tr>
+        <tr>
+        <th>Property Ref</th>
+        <td><?php echo $property_details[2]->identity; ?></td>
+        </tr>
+        <tr>
+        <th>Location</th>
+        <td><?php echo $property_details[2]->location; ?></td>
+        </tr>
+        <tr>
+        <th>Status</th>
+        <td><?php echo $property_details[2]->available ? 'AVAILABLE' : '<strong style="color:red">SOLD OUT</strong>'; ?></td>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
   </table>
 </div>
     </p>

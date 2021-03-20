@@ -14,12 +14,12 @@
 	
 
 	$host =  $_SERVER["HTTP_HOST"];
-	$host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.owerriproperty.com/"
+	$host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.owerriproperty.com/";
 
 	?>
 	<nav class="navbar navbar-expand-md navbar-light px-4 bg-light fixed-top navigation">
 					<a class="navbar-brand" href="home">
-						<img src="images/logo.png" alt="">
+						<img src="<?php echo $host; ?>images/logo.png" alt="logo">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

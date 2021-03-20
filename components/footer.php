@@ -1,4 +1,8 @@
+<?php
 
+$host =  $_SERVER["HTTP_HOST"];
+$host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.owerriproperty.com/";
+?>
 <footer class="footer section section-sm">
   <!-- Container Start -->
   <div class="container">
@@ -7,7 +11,7 @@
         <!-- About -->
         <div class="block about">
           <!-- footer logo -->
-          <img src="images/logo-footer.png" alt="logo">
+          <img src="<?php echo $host; ?>images/logo-footer.png" alt="logo">
           <!-- description -->
           <p class="alt-color text-justify">Owerriproperty is adapted for every genuine real estate agent who wants to quickly lease out an apartment or property under their care.
 It is the pioneer auction house for every property owner and landlord who has just built the house of his dreams and is desirous of filling out vacant flats or selling off land.</p>
@@ -57,13 +61,13 @@ It is the pioneer auction house for every property owner and landlord who has ju
           <div class="mobile d-flex  align-items-center">
             <a href="indexx.php">
               <!-- Icon -->
-              <img src="images/footer/phone-icon.png" alt="mobile-icon">
+              <img src="<?php echo $host; ?>images/footer/phone-icon.png" alt="mobile-icon">
             </a>
             <p class="mb-0">Get the Dealsy Mobile App and Save more</p>
           </div>
           <div class="download-btn d-flex my-3">
-            <a href="indexx.php"><img src="images/apps/google-play-store.png" class="img-fluid" alt=""></a>
-            <a href="indexx.php" class=" ml-3"><img src="images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
+            <a href="indexx.php"><img src="<?php echo $host; ?>images/apps/google-play-store.png" class="img-fluid" alt=""></a>
+            <a href="indexx.php" class=" ml-3"><img src="<?php echo $host; ?>images/apps/apple-app-store.png" class="img-fluid" alt=""></a>
           </div>
         </div>
       </div>

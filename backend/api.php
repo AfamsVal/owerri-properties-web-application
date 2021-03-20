@@ -187,7 +187,9 @@ if(isset($_POST["property_name"]) AND isset($_FILES['upload'])) {
 	$values['timer'] = "'".$timer."'";
 	$values['status'] = 1;
 	$values['uid'] = $_SESSION['user_id_xxxxxxxx'];
-	$cols = "property_name,property_price,location,description,category,type,photo,identity,timer,status,uid";
+	$values['available'] = 1;
+
+	$cols = "property_name,property_price,location,description,category,type,photo,identity,timer,status,uid,available";
 	$values = array_values($values);
 	echo $insert = $obj->insert_image('properties',$cols,$values);	
 		
