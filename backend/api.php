@@ -147,7 +147,9 @@ if(isset($_POST['admin_user_login'])){
 
 
 
-
+// Adding new property 
+// ///////////////////////
+// ///////////////////////////
 
 if(isset($_POST["property_name"]) AND isset($_FILES['upload'])) {
 	if($_FILES['upload']['error'] != 4){
@@ -162,8 +164,11 @@ if(isset($_POST["property_name"]) AND isset($_FILES['upload'])) {
 	$values = array();
 	foreach ($_POST as $key => $value){
 		if($key != 'send' && $key != 'upload'){
-			$values[$key] = "'".$obj->sql_clean($value)."'";
-			
+			if($key =="property_price"){
+				$values[$key] = "'".intval(str_replace(",","",$obj->sql_clean($value)))."'";
+			}else{
+				$values[$key] = "'".$obj->sql_clean($value)."'";	
+			}			
 		}//var_dump($key);
 	}
 
@@ -203,9 +208,85 @@ if(isset($_POST["property_name"]) AND isset($_FILES['upload'])) {
 			}else { echo 'Property price is required!'; }
 			}else { echo 'Property name is required!'; }
 		}else { echo 'File not supported!'; }
-	}else { echo 'Please select Event photo to upload!'; }
+	}else { echo 'Please select Property photo to upload!'; }
 
 }
+
+
+
+
+
+
+// Adding new Agent with optional image upload
+//always copy from the one above to force user to upload image 
+// ///////////////////////
+// ///////////////////////////
+
+if(isset($_POST["business_name"]) AND isset($_FILES['upload'])) {
+	if(!isset( $_SESSION['user_id_xxxxxxxx'])) {
+		echo "Please Register/login first before you can Agent";
+		return;
+	}
+	if($_POST['business_name'] !=""){
+		if($_POST['business_address'] !=""){
+			if($_POST['business_phone_no'] !=""){
+				if($_POST['business_description'] !=""){
+					if($_POST['no_of_employee'] !=""){
+
+						$picture = "";
+
+	if($_FILES['upload']['error'] != 4){
+			if($_FILES['upload']['error'] == 0){
+				$filetype = $_FILES['upload']['type'];
+				if(strstr($filetype, "image/")){
+		
+			$picture = $obj->image_uploader($_FILES['upload']);
+			if($picture == 121){
+				echo 'File type not supported';
+				exit();
+			}else if($picture == 120){
+				echo 'File size is too big!';
+				exit();
+			}	
+			}else { echo 'File not supported!'; }
+			}else { echo 'File not supported!'; }
+		}else { 
+			
+
+
+				$values = array();
+				foreach ($_POST as $key => $value){
+					if($key != 'send' && $key != 'upload'){
+						
+							$values[$key] = "'".$obj->sql_clean($value)."'";	
+								
+					}
+				}
+
+				$business_name = $_POST['business_name'];
+				$business_address = $_POST['business_address'];
+				$business_phone_no = $_POST['business_phone_no'];
+				$business_description = $_POST['business_description'];
+				$no_of_employee = $_POST['no_of_employee'];
+				$business_reg_date = time();
+				$business_status = 1;
+				$photo = $picture;
+				$uid = $_SESSION['user_id_xxxxxxxx'];
+				
+				echo $insert = $obj->insert_into_user_update_buz($business_name,$business_address,$business_phone_no,$business_description,$no_of_employee,$business_reg_date,$business_status,$photo,$uid);
+	
+		 }
+
+		 				
+		}else { echo 'No of employee is required!'; }
+	}else { echo 'Business description is required!'; }
+}else { echo 'Phone no is required!'; }
+}else { echo 'Business address is required!'; }
+}else { echo 'Business name is required!'; }
+
+}
+
+
 
 
 
@@ -491,7 +572,9 @@ echo '<div class="col-lg-4 col-md-6">
 				</li>
 				<li class="list-inline-item">
 					<a href="category.php"><i class="fa fa-calendar"></i> '.date("m-d-Y", $get->timer).'</a>
-				</li>
+				</li>';
+				$price =  number_format($get->property_price, 2, '.', ',');
+				echo '<li class="text-black"><strong>#'.$price.'</strong></li>
 			</ul>
 			<p class="card-text" title="'.$get->description.'">'.substr($get->description,0,100).'<span>...</span></p>
 			<div class="product-ratings">

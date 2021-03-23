@@ -199,7 +199,7 @@ $referrals->visited_page('Properties',$myipAddress);
 </div>
   <div class="form-group col-12">
     <div class="form-group">
-        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;" src="images/upload.jpg" alt="Upload Event" /></center>
+        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;" src="images/upload.jpg" alt="Upload Property"/></center>
         <input type="file" id="upload" name="upload" style="color:#fff;background:black; display:none;" class="form-control">
     </div>
   </div>

@@ -175,7 +175,7 @@ $referrals->visited_page('Properties',$myipAddress);
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title font-weight-bold text-primary"><i class="fa fa-plus" aria-hidden="true"></i> Add New Property</h4>
+        <h4 class="modal-title font-weight-bold text-primary"><i class="fa fa-plus" aria-hidden="true"></i> Become an Agent</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 
@@ -199,43 +199,36 @@ $referrals->visited_page('Properties',$myipAddress);
 </div>
   <div class="form-group col-12">
     <div class="form-group">
-        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;" src="images/upload.jpg" alt="Upload Event" /></center>
+        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;" src="images/business-logo.jpg" alt="Upload Business logo" /></center>
         <input type="file" id="upload" name="upload" style="color:#fff;background:black; display:none;" class="form-control">
     </div>
   </div>
   <div class="form-group col-12">
-    <input type="text" id="property_name" name="property_name" maxlength="30" class="form-control" placeholder="Property name">
+    <input type="text" id="business_name" name="business_name" maxlength="30" class="form-control" placeholder="Business name">
   </div>
   <div class="form-group col-12">
-    <input type="text" id="property_price" name="property_price" class="form-control" placeholder="Price">
+    <input type="text" id="business_address" name="business_address" class="form-control" placeholder="Busines Address">
   </div>
   <div class="form-group col-12">
-    <input type="text" id="location" name="location" class="form-control" maxlength="20" placeholder="Location">
+    <input type="text" id="business_phone_no" name="business_phone_no" class="form-control" maxlength="20" placeholder="Business Phone no">
   </div>
   
   <div class="form-group col-12">
-  <textarea class="form-control" name="description" id="description" rows="3"  maxlength="300" placeholder="Description"></textarea>
+  <textarea class="form-control" name="business_description" id="business_description" rows="3"  maxlength="300" placeholder="Business Description"></textarea>
 </div>  
 
   <div class="form-group col-12">
-  <select id="category" name="category" class="form-control w-100">
-    <option value="">category</option>
-    <option value="Land">Land</option>
-    <option value="House">House</option>
-    <option value="Office">Office</option>
-    <option value="Cars">Cars</option>
-  </select>
-</div>
-<div class="form-group col-12">
-  <select id="type" name="type" class="form-control w-100">
-    <option value="">Type</option>
-    <option value="Brand New">Brand New</option>
-    <option value="Used">Used</option>
+  <select id="no_of_employee" name="no_of_employee" class="form-control w-100">
+    <option value="">No of Employee</option>
+    <option value="1 - 5">1 - 5</option>
+    <option value="6 - 10">6 - 10</option>
+    <option value="11 - 30">11 - 30</option>
+    <option value="31 - Above">31 - Above</option>
   </select>
 </div>
 <div class="col-12 mt-1 mb-3">
 <label id="feed_e"></label><br><br>
-<button type="submit" id="add_property" class="btn btn-primary active"><i class="fa fa-plus" aria-hidden="true"></i> Add Property</button>
+<button type="submit" id="add_agent" class="btn btn-primary active"><i class="fa fa-plus" aria-hidden="true"></i> Add Agent</button>
 <button type="button" class="btn btn-danger active" data-dismiss="modal">Close</button>
 </div>
 </form>
@@ -330,8 +323,8 @@ Essential Scripts
 
 
     $("#myform").on('submit',(function(e){
-	$("#add_property").html('<i class="fa fa-spinner fa-spin"></i> Add Property')
-	$('#add_property').attr("disabled", "disabled");
+	//$("#add_agent").html('<i class="fa fa-spinner fa-spin"></i> Add Property')
+	//$('#add_agent').attr("disabled", "disabled");
 e.preventDefault();
 var formdata = new FormData(this);
 		$.ajax({
@@ -346,21 +339,21 @@ var formdata = new FormData(this);
 				
 		success: function(data){
 		if(data ==1){
-            $(':input').val('');
-            $(':file').val('');
-            $("#previewimg").hide();
-            $("#deleteimg").hide();
-            $('#imgupload').attr('src','images/upload.jpg');
-            $("#imgupload").show();
+        //     $(':input').val('');
+        //     $(':file').val('');
+        //     $("#previewimg").hide();
+        //     $("#deleteimg").hide();
+        //     $('#imgupload').attr('src','images/business-logo.jpg');
+        //     $("#imgupload").show();
             $('#feed_e').slideDown();
             $('#feed_e').html('<span style="color:green;"><strong>UPLOADED SUCCESSFULLY</strong></span>');
-            $("#add_property").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
-            setTimeout(() => { location.reload();  }, 1500);
+            $("#add_agent").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
+           // setTimeout(() => { location.reload();  }, 1500);
         }else{
             $('#feed_e').slideDown();
             $('#feed_e').html('<span style="color:red;">'+data+'</span>');
-            $('#add_property').attr("disabled", false);
-            $("#add_property").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
+            $('#add_agent').attr("disabled", false);
+            $("#add_agent").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
         }
 		}            
 		});
@@ -407,7 +400,7 @@ $("#deleteimg").text('Deleting..');
 $('#preview').css("display", "none");
 $('#upload').val("");
 $("#deleteimg").hide();
-$('#imgupload').attr('src','images/upload.jpg');
+$('#imgupload').attr('src','images/business-logo.jpg');
 $("#imgupload").show();
 	$("#mysubmit").text('UPLOAD DATA')
 	$('#mysubmit').attr("disabled", false);

@@ -46,9 +46,9 @@
 						<strong>'.substr($power[2]->first_name,0,11).'</strong>
 						</button>
 						<div class="dropdown-menu">
-						  <a class="dropdown-item" href="my-account">My Account</a>
-						  <a class="dropdown-item" href="my-property">My Property</a>
-						  <a class="dropdown-item" href="logout">Logout</a>
+						  <a class="dropdown-item" href="'.$host.'my-account">My Account</a>
+						  <a class="dropdown-item" href="'.$host.'my-property">My Property</a>
+						  <a class="dropdown-item" href="'.$host.'logout">Logout</a>
 						</div>
 					  </div>
 					  </li>
@@ -56,10 +56,10 @@
 						}else{
 							echo '<ul class="navbar-nav ml-auto mt-10">
 							<li class="nav-item">
-								<a class="nav-link login-button" href="login">Login</a>
+								<a class="nav-link login-button" href="'.$host.'login">Login</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-white add-button" href="register"><i class="fa fa-plus-circle"></i> Register</a>
+								<a class="nav-link text-white add-button" href="'.$host.'register"><i class="fa fa-plus-circle"></i> Register</a>
 							</li>
 						</ul>';
 

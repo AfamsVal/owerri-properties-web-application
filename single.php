@@ -21,7 +21,9 @@ if($uid){
 $user = $referrals->power('users',$property_details[2]->uid);
 $first_name = $user[2]->first_name;
 $last_name = $user[2]->last_name;
+$email = $user[2]->email;
 $phone = $user[2]->phone;
+$business_name = $user[2]->business_name;
 
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('Blog',$myipAddress);
@@ -100,8 +102,8 @@ $referrals->visited_page('Blog',$myipAddress);
                 <div class="mask rgba-black-light"></div>
             </div>
             <div class="carousel-caption">
-                <h3 class="h3-responsive">Light mask</h3>
-                <p>First text</p>
+                <h3 class="h3-responsive text-light"><?php echo $property_details[2]->property_name; ?></h3>
+                <!-- <p>First text</p> -->
             </div>
         </div>
         <!-- <div class="carousel-item">
@@ -148,7 +150,7 @@ $referrals->visited_page('Blog',$myipAddress);
 
                         <div class="pt-3">
                         <h3>Property Details</h3> 
-    <p>
+   
     <div class="table-responsive">
     <table class="table table-hover">
     <thead>
@@ -166,42 +168,62 @@ $referrals->visited_page('Blog',$myipAddress);
         </tr>
         <tr>
         <th>Status</th>
-        <td><?php echo $property_details[2]->available ? 'AVAILABLE' : '<strong style="color:red">SOLD OUT</strong>'; ?></td>
+        <td><?php echo $property_details[2]->available ? '<strong style="color:green">AVAILABLE</strong>' : '<strong style="color:red">SOLD OUT</strong>'; ?></td>
+      </tr>
+        <tr>
+        <th>Price</th>
+        <?php $price =  number_format($property_details[2]->property_price, 2, '.', ','); ?>
+        <td><strong style="font-size:22px;">#<?php echo $price; ?></strong></td>
       </tr>
     </thead>
   </table>
 </div>
-    </p>
                        
                     </article>
+
                     <div class="block comment">
                         <h4>Contact Agent via Email</h4>
                         <form action="#">
                             <!-- Message -->
-                            <div class="form-group mb-30">
-                                <label for="message">Message</label>
-                                <textarea class="form-control" id="message" rows="3" required></textarea>
-                            </div>
+                           
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <!-- Name -->
                                     <div class="form-group mb-30">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name" required>
+                                        <input type="hidden" id="subject" value="Comment from property ID: <?php echo $property_details[2]->identity; ?>" class="form-control">
+
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
                                     <!-- Email -->
                                     <div class="form-group mb-30">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" required>
+                                        <label for="phone">Phone</label>
+                                        <input type="number" class="form-control" id="phone" required>
                                     </div>
                                 </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-group mb-30">
+                                    <label for="message">Message</label>
+                                    <textarea class="form-control" id="message" rows="3" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                <!-- ALERT  DIV HERE -->
+                                <div id="contact_error" class="alert alert-danger d-none py-1 my-1"></div>
+                                </div>
+
                             </div>
-                            <button class="btn btn-transparent">Drop a Message</button>
+                            <button id="contact_now" class="btn btn-transparent">Drop a Message</button>
                         </form>
                     </div>
-                    <div class="p-3 bg-gray text-justify">
+
+                    <div class="bg-gray p-3"><button class="btn btn-link" onclick="window.history.back();" style="font-size:20px;color:purple;"><strong><i class="fa fa-arrow-left" aria-hidden="true"></i> GO BACK</strong></button></div>
+
+                    <div class="p-3 mt-3 bg-gray text-justify">
                    <h3 style="color:brown"> Disclaimer </h3>
 <small>The information displayed about this property comprises a property advertisement. Owerri Property makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and we have no control over the content. This property listing does not constitute property particulars.The information is provided and maintained by Alhicon Global Investment Ltd. Nigeria Property Centre shall not in any way be held liable for the actions of any agent and/or property owner/landlord on or off this website.</small>
 </div>
@@ -212,11 +234,11 @@ $referrals->visited_page('Blog',$myipAddress);
                           <div class="widget archive">
                             <!-- Widget Header -->
                             <h5 class="widget-header">Marketed By</h5>
-                            <h6 style="font-size:18px;color:#666;">Alhicon Global Investment Ltd</h6>
-                            <p class="text-dark pr-2 pt-2"><i class="fa fa-map-marker" aria-hidden="true"></i> Alhicon Global Investment Ltd2</p>
-                            <p class="text-dark pr-2"><i class="fa fa-phone" aria-hidden="true"></i> 080748339932</p>
-                            <p class="text-dark pr-2"><i class="fa fa-whatsapp" aria-hidden="true"></i> 080748339932</p>
-                            <p class="text-dark pr-2"><i class="fa fa-envelope" aria-hidden="true"></i> myceet1@gmail.com</p>
+                            <h6 style="font-size:18px;color:#666;">
+                            <?php echo $business_name ? 'Alhicon Global Investment Ltd' : $first_name.' '.$last_name; ?></h6>
+                            <p class="text-dark pr-2 pt-2"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $property_details[2]->location; ?>, Nigeria</p>
+                            <p class="text-dark pr-2"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $phone; ?></p>
+                            <p class="text-dark pr-2"><i class="fa fa-envelope" aria-hidden="true"></i> <?php echo $email; ?></p>
                         </div>
                         <div class="widget category">
                             <!-- Widget Header -->
@@ -254,8 +276,92 @@ Essential Scripts
     <script src="../plugins/jquery-nice-select/js/jquery.nice-select.min.js"></script>
 
 
-    <script src="js/script.js"></script>
+    <script src="../js/script.js"></script>
 
+    <script>
+        $('#contact_now').click(function(e) {
+            e.preventDefault()
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var subject = $("#subject").val();
+            var message = $("#message").val();
+            let error = "";
+            let success = "";
+                        if (name.trim().length > 0) {
+                            if (phone.trim().length > 0) {
+                                if (message.trim().length > 10) {
+                                                $('#contact_now').html(
+                                                    '<i class="fa fa-spinner fa-spin"></i> SUBMIT...'
+                                                );
+                                                $('#contact_now').attr('disabled', 'disabled');
+
+                                                $.ajax({
+                                                    method: 'POST',
+                                                    url: '../backend/api.php',
+                                                    cache: false,
+                                                    data: {
+                                                        contactUs: 'contactUs',
+                                                        name: name,
+                                                        phone: phone,
+                                                        subject: subject,
+                                                        message: message,
+                                                    },
+                                                    success: function(data) {
+                                                        if (data == 1) {
+                                                            $('#contact_now').html(
+                                                                '<i class="fa fa-plus" aria-hidden="true"></i> SUBMIT '
+                                                            );
+                                                            $('#contact_error').removeClass(
+                                                                'd-none alert-danger')
+                                                            $('#contact_error').addClass(
+                                                                'alert-success')
+                                                            $('#contact_error').html(
+                                                                '<strong>Sent Successfully!</strong>'
+                                                            );
+
+                                                            $("#name").val('');
+                                                            $("#phone").val('');
+                                                            $("#subject").val('');
+                                                            $("#message").val('');
+
+                                                        } else if(data !="") {
+
+                                                            $('#contact_now').html(
+                                                                '<i class="fa fa-unlock-alt"></i> Register Now '
+                                                            );
+                                                            $('#contact_error').removeClass(
+                                                                'd-none  alert-success')
+                                                            $('#contact_error').addClass(
+                                                                'alert-danger')
+                                                            $('#contact_error').html(data);
+                                                        }
+                                                        $('#contact_now').attr('disabled',
+                                                            false);
+                                                    }
+                                                })
+                                          
+                                        } else {
+                                            error = 'Message must contain min of 10 characters!';
+                                                    }
+                                } else {
+                                    error = 'Phone is required!';
+                                }
+                        
+                        } else {
+                            error = 'Name is required!';
+                        }
+
+            if (error.trim().length > 0) {
+                $('#contact_error').removeClass('d-none alert-success')
+                $('#contact_error').addClass('alert-danger')
+                $('#contact_error').html(error);
+
+                setTimeout(() => {
+                    $('#contact_error').addClass('d-none')
+                }, 2000);
+            }
+        })
+    </script>
 </body>
 
 </html>

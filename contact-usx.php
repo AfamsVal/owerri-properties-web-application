@@ -124,7 +124,7 @@ $referrals->visited_page('ContactUs',$myipAddress);
                                 </div>
                             </div>
                             
-                            <input type="email" id="subject" placeholder="Subject *" class="form-control">
+                            <input type="text" id="subject" placeholder="Subject *" class="form-control">
                                     
                             <textarea name="message" id="message" placeholder="Message *"
                                 class="border w-100 p-3 mt-3 mt-lg-4"></textarea>

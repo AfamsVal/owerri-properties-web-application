@@ -654,6 +654,26 @@ public function admin_update_user_amount($id,$uid,$amount,$max_ref_no,$bank_name
 
 
 
+
+
+
+	public function insert_into_user_update_buz($business_name,$business_address,$business_phone_no,$business_description,$no_of_employee,$business_reg_date,$business_status,$photo,$uid){
+		$con = $this->connect();
+	   $stmt = "UPDATE users SET business_name='$business_name',business_address='$business_address',business_phone_no='$business_phone_no',business_description='$business_description',no_of_employee='$no_of_employee',
+	   business_reg_date = '$business_reg_date',business_status = '$business_status',business_logo='$photo' WHERE id = '$uid'";
+	   $query = mysqli_query($con,$stmt) or die (mysqli_error($con));
+	   if($query){
+		   $message = "1";
+	   }else{
+		   $message = "Something went wrong, please try again!";
+	   }
+	   return $message;
+   }
+
+
+
+
+
    public function update_user($uid,$first_name,$last_name,$phone,$address){
 	$con = $this->connect();
 	$sql = "select phone from users where id = ?";
