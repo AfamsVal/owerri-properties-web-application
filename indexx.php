@@ -298,7 +298,7 @@ $host  = $host == 'localhost' ?  'http://localhost/RealEstate/' : "https://www.o
 
                         </div>
                         <div class="col-sm-12 col-lg-4">
-                            <!-- product card ---
+                            <!-- product card --
                             <div class="product-item bg-light">
                                 <div class="card">
                                     <div class="thumb-content">
@@ -428,7 +428,7 @@ Essential Scripts
     $(document).ready(function(){
 
     //CODE FOR FETCHING OUT NEWS STARTS HERE
-    var limit_full_h = 10;
+    var limit_full_h = 50;
 	var start_full_h = 0;
 	var action = 'inactive';
 	function load_all_properties(limit_full_h,start_full_h){

@@ -726,6 +726,70 @@ public function fetch_my_property($uid,$start,$limit){
 
 
 
+public function fetch_all_admin_property(){
+	$con = $this->connect();
+	$query = mysqli_query($con,"SELECT * from properties where status = '1' ORDER BY timer DESC");
+	$count = mysqli_num_rows($query);
+	
+		return array($count,$query);
+	}
+
+
+	public function count_item($table,$prop){
+		$con = $this->connect();
+		$query = mysqli_query($con,"SELECT * from ".$table." WHERE ".$prop." != '' AND status = 1");
+		$count = mysqli_num_rows($query);
+		if($count){
+		    return $count;
+		}else{
+		    return "0"; 
+		}
+	}
+
+
+	public function count_my_item($uid){
+		$con = $this->connect();
+		$query = mysqli_query($con,"SELECT * from properties WHERE uid = '$uid' AND status = 1");
+		$count = mysqli_num_rows($query);
+		if($count){
+		    return $count;
+		}else{
+		    return "0"; 
+		}
+	}
+
+
+	public function my_property_count($uid){
+		$con = $this->connect();
+		$query = mysqli_query($con,"SELECT * from properties WHERE uid = '$uid' AND status = 1");
+		// $count = mysqli_num_rows($query) or die(mysqli_error($con));
+		$count = mysqli_num_rows($query);
+		if($count > 0){
+		    return $count;
+		}else{
+		    return 0; 
+		}
+	}
+
+
+
+
+
+public function fetch_all_agent($uid,$start,$limit){
+	$uid = $this->sql_clean($uid);
+	$start = $this->sql_clean($start);
+	$limit = $this->sql_clean($limit);
+	$con = $this->connect();
+	$query = mysqli_query($con,"SELECT * from users WHERE status = '0' AND business_name != '' ORDER BY business_reg_date DESC LIMIT ".$start.", ".$limit."");
+	$count = mysqli_num_rows($query) or die(mysqli_error($con));
+	
+		return array($count,$query);
+
+	}
+
+
+
+
 
 
 
@@ -743,6 +807,99 @@ public function fetch_all_property($start,$limit){
 
 
 
+
+
+public function delete_props($id){
+	$sql = "UPDATE properties SET status = 0 WHERE id = ?";
+	$query = $this->con->prepare($sql);
+	$query->bind_param('s',$id);
+	if($query->execute()){
+	if($this->con->affected_rows > 0){
+		
+		return 1;
+		
+	}else{return 'Something went wrong, please try again!';}
+	}else{return 'Something went wrong, please try again!';}
+	
+}
+
+
+
+
+
+
+public function block_user($id){
+	$sql = "UPDATE users SET is_blocked = 1 WHERE id = ?";
+	$query = $this->con->prepare($sql);
+	$query->bind_param('s',$id);
+	if($query->execute()){
+	if($this->con->affected_rows > 0){
+		
+		return 1;
+		
+	}else{return 'Something went wrong, please try again!';}
+	}else{return 'Something went wrong, please try again!';}
+	
+}
+
+
+
+
+
+
+public function verifying_id($id){
+	$sql = "UPDATE properties SET verified = 1 WHERE id = ?";
+	$query = $this->con->prepare($sql);
+	$query->bind_param('s',$id);
+	if($query->execute()){
+	if($this->con->affected_rows > 0){
+		
+		return 1;
+		
+	}else{return 'Something went wrong, please try again!';}
+	}else{return 'Something went wrong, please try again!';}
+	
+}
+
+
+
+
+
+public function pending_id($id){
+	$sql = "UPDATE properties SET verified = 0 WHERE id = ?";
+	$query = $this->con->prepare($sql);
+	$query->bind_param('s',$id);
+	if($query->execute()){
+	if($this->con->affected_rows > 0){
+		
+		return 1;
+		
+	}else{return 'Something went wrong, please try again!';}
+	}else{return 'Something went wrong, please try again!';}
+	
+}
+
+
+
+
+
+
+
+public function unblock_user($id){
+	$sql = "UPDATE users SET is_blocked = 0 WHERE id = ?";
+	$query = $this->con->prepare($sql);
+	$query->bind_param('s',$id);
+	if($query->execute()){
+	if($this->con->affected_rows > 0){
+		
+		return 1;
+		
+	}else{return 'Something went wrong, please try again!';}
+	}else{return 'Something went wrong, please try again!';}
+	
+}
+
+
 	
 	
 	
@@ -750,7 +907,7 @@ public function fetch_all_property($start,$limit){
 		
 public function select_all_users(){
 	$con = $this->connect();
-	$sql = "SELECT * FROM users";
+	$sql = "SELECT * FROM users ORDER BY reg_date DESC";
 	$query = mysqli_query($con,$sql);
 	$count = mysqli_num_rows($query);
 	return array($count,$query);

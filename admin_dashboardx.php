@@ -12,6 +12,7 @@ if($uid){
 
 $select_all_users = $referrals->select_all_users();
 
+
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('About',$myipAddress);
 
@@ -55,10 +56,10 @@ $referrals->visited_page('About',$myipAddress);
 
 
     <header>
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <?php include "components/nav_bar.php"; ?>
+                    <?php include "components/admin_nav.php"; ?>
                 </div>
             </div>
         </div>
@@ -69,25 +70,30 @@ $referrals->visited_page('About',$myipAddress);
 =================================-->
     <section class="mt-6">
         <!-- Container Start -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row mb-5 mt-3 bg-dark">
                 <div class="col-md-12 text-center">
                     <!-- Title text -->
-                    <h1 class="text-white py-2">All Users</h1>
+                    <h1 class="text-white py-2">All Users (<?php echo $select_all_users[0]; ?>)</h1>
                     <?php
 	if($select_all_users[0] > 0){
 		echo '					
 		<div class="table-responsive">          
-  <table class="table table-bordered" id="delTable" style="background:#ccd;">
+  <table class="table table-bordered table-striped" id="delTable" style="background:#ccd;">
     <thead style="background:grey;color:#fff;">
       <tr>
-        <th>#</th>
+        <th>ID</th>
         <th>NAME</th>
 		<th>PHONE</th>
 		<th>EMAIL</th>
         <th>ADDRESS</th>
+        <th>REG. DATE</th>
 		<th>STATE</th>
 		<th>PROPERTIES</th>
+		<th>BUZ NAME</th>
+		<th>BUZ ADDRESS</th>
+		<th>BUZ DESCRIPTION</th>
+		<th>BUZ CREATED</th>
 		<th>ACTION</th>
       </tr>
     </thead>
@@ -96,24 +102,30 @@ $referrals->visited_page('About',$myipAddress);
 	$i = 0;
 	while($check = mysqli_fetch_object($select_all_users[1])){
 		$i++;
+        $c = $referrals->my_property_count($check->id);
 	?>
-      <tr>
+      <tr id="evt_<?php echo $check->id; ?>">
         <td><?php echo $i; ?></td>
 		<td><?php echo $check->last_name.' '.$check->first_name; ?></td>
         <td> <?php echo $check->phone; ?></td>
 		<td> <?php echo $check->email; ?></td>		
 		<td> <?php echo $check->address; ?></td>		
+		<td> <?php echo date("m-d-Y", $check->reg_date); ?></td>		
 		<td> <?php echo $check->state; ?></td>		
-		<td> 2</td>		
+		<td> <?php  echo $c;  ?></td>
+        <td> <?php echo $check->business_name; ?></td>		
+        <td> <?php echo $check->business_address; ?></td>		
+        <td> <?php echo $check->business_description; ?></td>		
+        <td> <?php echo date("m-d-Y", $check->business_reg_date); ?></td>		
 		<td> 
         <?php
         if($check->is_blocked){
             ?>
-        <button type="submit" id="login" class="btn btn-info py-1">Unblock</button>
+        <button data-id="<?php echo $check->id; ?>" data-role="unblock-user" class="btn btn-info py-1"><i class="fas fa-user-slash"></i> Unblock</button>
         <?php
         }else{
            ?>
-        <button type="submit" id="login" class="btn btn-danger py-1"><i class="fa fa-ban" aria-hidden="true"></i> Block</button>
+        <button data-id="<?php echo $check->id; ?>" data-role="block-user" class="btn btn-danger py-1"><i class="fa fa-ban" aria-hidden="true"></i> Block</button>
 
            <?php 
         }
@@ -152,6 +164,67 @@ Essential Scripts
 
 
     <script src="js/script.js"></script>
+
+    <script>
+    $(document).ready(function(){
+		$(document).on('click','button[data-role="block-user"]',function(){
+			if (confirm("Are you sure you want to block this user?")){
+				$(this).html('<i class="fa fa-spinner fa-spin"></i> Block');
+				var block_user_id = $(this).data('id');
+				$.ajax({
+					   method: "POST",
+					   url: "backend/api.php",
+					   data: {block_user_id:block_user_id},
+					   cache: false,
+					   success: function(data)
+					   {
+							   if(data ==1){
+							   //parent.fadeOut(300,function() {
+							 $('#evt_'+block_user_id).slideUp('slow', function(){
+								 $(this).remove();
+								 });
+								}else{
+									alert(data);
+								}
+						}
+				 });				
+			}else{ return false; }
+		});
+
+
+
+
+
+
+////////////////////////////////
+////////////UNBLOCK USER///
+////////////////////////////////
+$(document).on('click','button[data-role="unblock-user"]',function(){
+			if (confirm("Are you sure you want to unblock this user?")){
+				$(this).html('<i class="fa fa-spinner fa-spin"></i> Block');
+				var unblock_user_id = $(this).data('id');
+				$.ajax({
+					   method: "POST",
+					   url: "backend/api.php",
+					   data: {unblock_user_id:unblock_user_id},
+					   cache: false,
+					   success: function(data)
+					   {
+							   if(data ==1){
+							   //parent.fadeOut(300,function() {
+							 $('#evt_'+unblock_user_id).slideUp('slow', function(){
+								 $(this).remove();
+								 });
+								}else{
+									alert(data);
+								}
+						}
+				 });				
+			}else{ return false; }
+		});
+
+    })
+        </script>
 
 </body>
 

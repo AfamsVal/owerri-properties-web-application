@@ -173,7 +173,7 @@ $referrals->visited_page('Blog',$myipAddress);
         <tr>
         <th>Price</th>
         <?php $price =  number_format($property_details[2]->property_price, 2, '.', ','); ?>
-        <td><strong style="font-size:22px;">#<?php echo $price; ?></strong></td>
+        <td><strong style="font-size:22px;">N<?php echo $price; ?></strong></td>
       </tr>
     </thead>
   </table>
@@ -225,7 +225,9 @@ $referrals->visited_page('Blog',$myipAddress);
 
                     <div class="p-3 mt-3 bg-gray text-justify">
                    <h3 style="color:brown"> Disclaimer </h3>
-<small>The information displayed about this property comprises a property advertisement. Owerri Property makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and we have no control over the content. This property listing does not constitute property particulars.The information is provided and maintained by Alhicon Global Investment Ltd. Nigeria Property Centre shall not in any way be held liable for the actions of any agent and/or property owner/landlord on or off this website.</small>
+<small>
+The information displayed about this property comprises a property advertisement. Owerri Property makes no warranty as to the accuracy or completeness of the advertisement or any linked or associated information, and we have no control over the content. This property listing does not constitute property particulars.The information is provided and maintained by Camdaz Global Ventures. Owerri Property shall not in any way be held liable for the actions of any agent and/or property owner/landlord on or off this website.
+</small>
 </div>
 </div>
                 <div class="col-lg-4">

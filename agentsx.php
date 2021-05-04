@@ -8,7 +8,15 @@ $referrals->check_cookie();
 $uid = $_SESSION['user_id_xxxxxxxx'];
 if($uid){
     $power = $referrals->power('users',$uid);
+    $business_name = $power[2]->business_name;
+    $business_logo = $power[2]->business_logo;
+    $business_address = $power[2]->business_address;
+    $business_phone_no = $power[2]->business_phone_no;
+    $business_description = $power[2]->business_description;
+    $no_of_employee = $power[2]->no_of_employee;
 }
+
+//$business_count = $referrals->count_item('users','business_name');
 
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('Properties',$myipAddress);
@@ -92,47 +100,31 @@ $referrals->visited_page('Properties',$myipAddress);
                 <div class="col-md-12">
                     <div class="search-result bg-dark">
                         <h2 class="text-white">Agent Page</h2>
-                        <p class="text-white">78 Results found</p>
+                        <p class="text-white"><?php echo $business_count; ?> Results found</p>
                         <p>
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-2 active    ">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Become an Agent
+                        <i class="fa fa-plus" aria-hidden="true"></i> <?php if($business_name){ echo 'Edit Agent Account'; }else{ echo 'Become an Agent';} ?>
                          </button>
                         </p>                        
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4">
+                <!-- <div class="col-lg-3 col-md-4">
                     <div class="category-sidebar">
                         <div class="widget category-list">
-                            <h4 class="widget-header">Top Categories</h4>
+                            <h4 class="widget-header">Top Agents</h4>
                             <ul class="category-list">
-                                <li><a href="category.php">Lands <span>193</span></a></li>
-                                <li><a href="category.php">Houses <span>233</span></a></li>
-                                <li><a href="category.php">Offices <span>183</span></a></li>
-                                <li><a href="category.php">Cars <span>343</span></a></li>
+                                <li><a href="category.php">Agent 1 <span>93</span></a></li>
+                                <li><a href="category.php">Agent 2 <span>33</span></a></li>
+                                <li><a href="category.php">Agent 3 <span>33</span></a></li>
+                                <li><a href="category.php">Agent 4 <span>29</span></a></li>
                             </ul>
                         </div>
 
-                        <div class="widget product-shorting">
-                            <h4 class="widget-header">By Condition</h4>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    Brand New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    Used
-                                </label>
-                            </div>
-                        </div>
-
                     </div>
-                </div>
-                <div class="col-lg-9 col-md-8" id="myData">
+                </div> -->
+                <div class="col-lg-9 col-md-8 mx-auto" id="myData">
                   
                     <!-- ad listing list  -->
                    
@@ -199,27 +191,29 @@ $referrals->visited_page('Properties',$myipAddress);
 </div>
   <div class="form-group col-12">
     <div class="form-group">
-        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;" src="images/business-logo.jpg" alt="Upload Business logo" /></center>
+    <?php if($business_logo){ echo '<small class="text-center d-block text-info mb-2">click on the image below to change business logo</small>'; } ?>
+        <center><img class="img-responsive" id="imgupload" style="cursor: pointer;width:100%;" src="<?php if($business_logo){ echo $business_logo; }else{ echo 'images/business-logo.jpg';} ?>" alt="Upload Business logo"/></center>
         <input type="file" id="upload" name="upload" style="color:#fff;background:black; display:none;" class="form-control">
     </div>
   </div>
+
   <div class="form-group col-12">
-    <input type="text" id="business_name" name="business_name" maxlength="30" class="form-control" placeholder="Business name">
+    <input type="text" id="business_name" value="<?php echo $business_name; ?>" name="business_name" maxlength="30" class="form-control" placeholder="Business name">
   </div>
   <div class="form-group col-12">
-    <input type="text" id="business_address" name="business_address" class="form-control" placeholder="Busines Address">
+    <input type="text" id="business_address" value="<?php echo $business_address; ?>" name="business_address" class="form-control" placeholder="Busines Address">
   </div>
   <div class="form-group col-12">
-    <input type="text" id="business_phone_no" name="business_phone_no" class="form-control" maxlength="20" placeholder="Business Phone no">
+    <input type="text" id="business_phone_no" value="<?php echo $business_phone_no; ?>" name="business_phone_no" class="form-control" maxlength="20" placeholder="Business Phone no">
   </div>
   
   <div class="form-group col-12">
-  <textarea class="form-control" name="business_description" id="business_description" rows="3"  maxlength="300" placeholder="Business Description"></textarea>
+  <textarea class="form-control" value="<?php echo $business_description; ?>" name="business_description" id="business_description" rows="3"  maxlength="300" placeholder="Business Description"></textarea>
 </div>  
 
   <div class="form-group col-12">
   <select id="no_of_employee" name="no_of_employee" class="form-control w-100">
-    <option value="">No of Employee</option>
+    <option value="<?php echo $no_of_employee; ?>"><?php if($no_of_employee){ echo $no_of_employee; }else{ echo 'No of Employee';} ?></option>
     <option value="1 - 5">1 - 5</option>
     <option value="6 - 10">6 - 10</option>
     <option value="11 - 30">11 - 30</option>
@@ -228,7 +222,7 @@ $referrals->visited_page('Properties',$myipAddress);
 </div>
 <div class="col-12 mt-1 mb-3">
 <label id="feed_e"></label><br><br>
-<button type="submit" id="add_agent" class="btn btn-primary active"><i class="fa fa-plus" aria-hidden="true"></i> Add Agent</button>
+<button type="submit" id="add_agent" class="btn btn-primary active"><i class="fa fa-plus" aria-hidden="true"></i> <?php if($no_of_employee){ echo 'Update Agent'; }else{ echo 'Add Agent';} ?></button>
 <button type="button" class="btn btn-danger active" data-dismiss="modal">Close</button>
 </div>
 </form>
@@ -260,20 +254,20 @@ Essential Scripts
     $(document).ready(function(){
 
     //CODE FOR FETCHING OUT NEWS STARTS HERE
-    var limit_f = 10;
-	var start_f = 0;
+    var agent_limit_f = 10;
+	var agent_start_f = 0;
 	var action = 'inactive';
-	function load_all_properties(limit_f,start_f){
+	function load_all_properties(agent_limit_f,agent_start_f){
 		$.ajax({
 			method:'POST',
 			url:'backend/api.php',
 			cache:false,
-			data:{limit_f,start_f},
+			data:{agent_limit_f,agent_start_f},
 			success:function(data){
-				if(start_f == 0 && data != ""){ $('#myData').html(''); }
+				if(agent_start_f == 0 && data != ""){ $('#myData').html(''); }
 				$('#myData').append(data);
 				if(data == ""){
-				if(start_f == 0){
+				if(agent_start_f == 0){
 				$('.data_info').html('<button type="button" onclick="location.reload();" class="btn btn-turquoise">NO PROPERTY YET..</button>');
 					}else{
 				$('.data_info').html('<button type="button" onclick="location.reload();" class="btn btn-turquoise">NO MORE PROPERTY FOUND FOR NOW!!</button>');
@@ -294,14 +288,14 @@ Essential Scripts
 		
 	if(action == 'inactive'){
 		action = 'active';
-		load_all_properties(limit_f,start_f);
+		load_all_properties(agent_limit_f,agent_start_f);
 	}
 	$(window).scroll(function(){
 			
 		if($(window).scrollTop() + $(window).height() > $('.add_joke').height() && action == 'inactive'){
 			action = 'active';
-			start_f = start_f + limit_f;
-			load_all_properties(limit_f,start_f);
+			agent_start_f = agent_start_f + agent_limit_f;
+			load_all_properties(agent_limit_f,agent_start_f);
 		}
 
 	})
@@ -339,29 +333,27 @@ var formdata = new FormData(this);
 				
 		success: function(data){
 		if(data ==1){
-        //     $(':input').val('');
-        //     $(':file').val('');
-        //     $("#previewimg").hide();
-        //     $("#deleteimg").hide();
-        //     $('#imgupload').attr('src','images/business-logo.jpg');
-        //     $("#imgupload").show();
+            $(':input').val('');
+            $(':file').val('');
+            $("#previewimg").hide();
+            $("#deleteimg").hide();
+            $('#imgupload').attr('src','images/business-logo.jpg');
+            $("#imgupload").show();
             $('#feed_e').slideDown();
             $('#feed_e').html('<span style="color:green;"><strong>UPLOADED SUCCESSFULLY</strong></span>');
             $("#add_agent").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
-           // setTimeout(() => { location.reload();  }, 1500);
+           setTimeout(() => { location.reload();  }, 1500);
         }else{
             $('#feed_e').slideDown();
             $('#feed_e').html('<span style="color:red;">'+data+'</span>');
             $('#add_agent').attr("disabled", false);
+            setTimeout(() => { $('#feed_e').slideUp(); }, 4000);
             $("#add_agent").html('<i class="fa fa-plus" aria-hidden="true"></i> Add Property');
         }
 		}            
 		});
 }));		
-		
-$(':input').focus(function(){
-	$('#feed_e').slideUp();
-})		
+				
 		
 		
 	

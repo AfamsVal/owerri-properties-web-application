@@ -106,7 +106,63 @@ if(isset($_POST['admin_update_user_amount'])){
 
 
 
+	
+	
+	
+	
+	
+	
 
+if(isset($_POST['delete_props_id'])){
+	$id = $_POST['delete_props_id'];
+	$info = $obj->delete_props($id);
+	echo $info;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+if(isset($_POST['verifying_id'])){
+	$id = $_POST['verifying_id'];
+	$info = $obj->verifying_id($id);
+	echo $info;
+	}
+	
+	
+	
+	
+
+if(isset($_POST['pending_id'])){
+	$id = $_POST['pending_id'];
+	$info = $obj->pending_id($id);
+	echo $info;
+	}
+	
+	
+	
+
+if(isset($_POST['block_user_id'])){
+	$id = $_POST['block_user_id'];
+	$info = $obj->block_user($id);
+	echo $info;
+	}
+	
+	
+	
+	
+	
+
+if(isset($_POST['unblock_user_id'])){
+	$id = $_POST['unblock_user_id'];
+	$info = $obj->unblock_user($id);
+	echo $info;
+	}
 
 
 
@@ -165,7 +221,7 @@ if(isset($_POST["property_name"]) AND isset($_FILES['upload'])) {
 	foreach ($_POST as $key => $value){
 		if($key != 'send' && $key != 'upload'){
 			if($key =="property_price"){
-				$values[$key] = "'".intval(str_replace(",","",$obj->sql_clean($value)))."'";
+				$values[$key] = "'".intval(preg_replace("/[^0-9.]/", "",$obj->sql_clean($value)))."'";
 			}else{
 				$values[$key] = "'".$obj->sql_clean($value)."'";	
 			}			
@@ -250,7 +306,7 @@ if(isset($_POST["business_name"]) AND isset($_FILES['upload'])) {
 			}	
 			}else { echo 'File not supported!'; }
 			}else { echo 'File not supported!'; }
-		}else { 
+		} 
 			
 
 
@@ -263,19 +319,18 @@ if(isset($_POST["business_name"]) AND isset($_FILES['upload'])) {
 					}
 				}
 
-				$business_name = $_POST['business_name'];
-				$business_address = $_POST['business_address'];
-				$business_phone_no = $_POST['business_phone_no'];
-				$business_description = $_POST['business_description'];
-				$no_of_employee = $_POST['no_of_employee'];
+				$business_name = $obj->sql_clean($_POST['business_name']);
+				$business_address = $obj->sql_clean($_POST['business_address']);
+				$business_phone_no = $obj->sql_clean($_POST['business_phone_no']);
+				$business_description = $obj->sql_clean($_POST['business_description']);
+				$no_of_employee = $obj->sql_clean($_POST['no_of_employee']);
 				$business_reg_date = time();
 				$business_status = 1;
 				$photo = $picture;
 				$uid = $_SESSION['user_id_xxxxxxxx'];
+
 				
 				echo $insert = $obj->insert_into_user_update_buz($business_name,$business_address,$business_phone_no,$business_description,$no_of_employee,$business_reg_date,$business_status,$photo,$uid);
-	
-		 }
 
 		 				
 		}else { echo 'No of employee is required!'; }
@@ -491,9 +546,14 @@ if(isset($_POST['limit_f'],$_POST['start_f'])){
 		
 echo '<div class="ad-listing-list mt-20">
 <div class="row p-lg-3 p-sm-5 p-4">
-	<div class="col-lg-4 align-self-center">
-	<div class="price">Pending</div>
-		<a href="single/'.$get->id.'">
+	<div class="col-lg-4 align-self-center">';
+	if($get->verified){
+		echo '<div class="confirm text-light bg-success text-center">Verified</div>';
+	}else{
+		echo '<div class="pending text-light bg-primary text-center">Pending</div>';
+	}
+	
+		echo '<a href="single/'.$get->id.'">
 			<img src="'.$get->photo.'" class="img-fluid" alt="">
 		</a>
 	</div>
@@ -540,6 +600,56 @@ echo '<div class="ad-listing-list mt-20">
 
 
 
+	if(isset($_POST['agent_limit_f'],$_POST['agent_start_f'])){
+		$start = $obj->sql_clean($_POST['agent_start_f']);
+		$limit = $obj->sql_clean($_POST['agent_limit_f']);
+		if(isset($_SESSION['user_id_xxxxxxxx'])){
+		$uid = $_SESSION['user_id_xxxxxxxx'];
+		}
+	
+			$gets = $obj->fetch_all_agent($uid,$start,$limit);
+			
+		if($gets[0] > 0){
+			while($get = mysqli_fetch_object($gets[1])){
+			
+			
+	echo '<div class="ad-listing-list mt-20">
+	<div class="row p-lg-3 p-sm-5 p-4">
+		<div class="col-lg-4 align-self-center">
+			<a href="single/'.$get->id.'">
+				<img src="';
+				echo $get->business_logo ? $get->business_logo : 'images/agent-logo.jpg';
+				echo '" class="img-fluid" alt="No Image">
+			</a>
+		</div>
+		<div class="col-lg-8">
+					<div class="ad-listing-content">
+						<div>
+							<a href="single/'.$get->id.'" class="font-weight-bold text-uppercase">'.$get->business_name.'</a>
+						</div>
+						<ul class="list-inline mt-2 mb-3">
+							<li class="list-inline-item"><a href="category.php"> <i
+										class="fa fa-phone"></i> '.$get->business_phone_no.'</a></li>
+							<li class="list-inline-item"><a href="category-2.php"><i
+										class="fa fa-calendar"></i> '.date("m-d-Y", $get->business_reg_date).'</a></li>
+						</ul>
+						<p class="pr-5" title="'.$get->business_address.'">'.substr($get->business_address,0,100).'<span>...</span></p>
+						<p class="pr-5" title="'.$get->business_description.'">'.substr($get->business_description,0,200).'<span>...</span></p>
+					</div>
+		</div>
+	</div>
+	</div>';
+		
+		}
+		}
+		}
+
+
+
+
+
+
+
 
 
 if(isset($_POST['limit_full_h'],$_POST['start_full_h'])){
@@ -556,9 +666,14 @@ echo '<div class="col-lg-4 col-md-6">
 <!-- product card -->
 <div class="product-item bg-light">
 	<div class="card">
-		<div class="thumb-content">
-		<div class="price">Pending</div>
-			<a href="single/'.$get->id.'">
+		<div class="thumb-content">';
+
+		if($get->verified){
+			echo '<div class="confirm">Verified</div>';
+		}else{
+			echo '<div class="pending">Pending</div>';
+		}
+			echo '<a href="single/'.$get->id.'">
 				<img class="card-img-top img-fluid" src="'.$get->photo.'"
 					alt="Card image cap">
 			</a>
@@ -574,7 +689,7 @@ echo '<div class="col-lg-4 col-md-6">
 					<a href="category.php"><i class="fa fa-calendar"></i> '.date("m-d-Y", $get->timer).'</a>
 				</li>';
 				$price =  number_format($get->property_price, 2, '.', ',');
-				echo '<li class="text-black"><strong>#'.$price.'</strong></li>
+				echo '<li class="text-black"><strong>N'.$price.'</strong></li>
 			</ul>
 			<p class="card-text" title="'.$get->description.'">'.substr($get->description,0,100).'<span>...</span></p>
 			<div class="product-ratings">
@@ -620,8 +735,13 @@ if(isset($_POST['limit_full'],$_POST['start_full'])){
 		
 echo '<div class="ad-listing-list mt-20">
 <div class="row p-lg-3 p-sm-5 p-4">
-	<div class="col-lg-4 align-self-center">
-		<a href="single/'.$get->id.'">
+	<div class="col-lg-4 align-self-center">';
+	if($get->verified){
+		echo '<div class="confirm text-light bg-success text-center">Verified</div>';
+	}else{
+		echo '<div class="pending text-light bg-primary text-center">Pending</div>';
+	}
+		echo '<a href="single/'.$get->id.'">
 			<img src="'.$get->photo.'" class="img-fluid" alt="">
 		</a>
 	</div>

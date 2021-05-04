@@ -92,7 +92,7 @@ $referrals->visited_page('ContactUs',$myipAddress);
 
                 <div class="col-md-4">
                     <a class="bg-primary px-3 py-2 rounded text-white mb-2 d-inline-block"><i class="fa fa-map-marker"></i></a>
-                    <p>Owerri, Imo subject,<br> Nigeria</p>
+                    <p>Owerri, Imo State,<br> Nigeria</p>
                     
                 </div>
 

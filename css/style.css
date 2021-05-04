@@ -50,11 +50,11 @@ p {
   color: #888;
 }
 
-.text-gray{
-  color:#aaa;
+.text-gray {
+  color: #aaa;
 }
 
-.bg-gray{
+.bg-gray {
   background-color: #aaa;
 }
 
@@ -1590,11 +1590,21 @@ ul.pagination .active a {
   position: relative;
 }
 
-.product-item .thumb-content .price {
+.product-item .thumb-content .pending {
   position: absolute;
   top: 10px;
   left: 10px;
   background: #5672f9;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+.product-item .thumb-content .confirm {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #0f8f20;
   color: #fff;
   display: inline-block;
   padding: 4px 8px;

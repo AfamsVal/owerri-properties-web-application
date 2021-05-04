@@ -10,6 +10,8 @@ if($uid){
     $power = $referrals->power('users',$uid);
 }
 
+$property_count = $referrals->count_item('properties','property_name');
+
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('Properties',$myipAddress);
 
@@ -105,7 +107,7 @@ $referrals->visited_page('Properties',$myipAddress);
                 <div class="col-md-12">
                     <div class="search-result bg-gray">
                         <h2>Results For All Properties</h2>
-                        <p>700 Results found</p>
+                        <p><?php echo $property_count; ?> Results found</p>
                     </div>
                 </div>
             </div>
@@ -196,7 +198,7 @@ Essential Scripts
     $(document).ready(function(){
 
     //CODE FOR FETCHING OUT NEWS STARTS HERE
-    var limit_full = 10;
+    var limit_full = 100;
 	var start_full = 0;
 	var action = 'inactive';
 	function load_all_properties(limit_full,start_full){

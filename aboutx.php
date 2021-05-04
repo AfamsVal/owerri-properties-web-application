@@ -92,7 +92,6 @@ $referrals->visited_page('About',$myipAddress);
                         <p>Owerri Property is our response to the current chaotic method of renting or acquiring property in Owerri. We could not find a solution to renting or buying properties in Owerri, so we decided build one. Not for us, but for everyone who seeks to sell or acquire property in this beautiful city we call home. We all are stakeholders..</p>
                         <p>It took us lots of time and effort to build this and it is with great pleasure we share the results with you.</p>
                         <p>Owerriproperty is for prospective tenants seeking to rent house, landowners seeking to sell lands, real estate agents and companies.</p>
-                        <p>Owerriproperty is for prospective tenants seeking to rent house, landowners seeking to sell lands, real estate agents and companies.</p>
                         <p>I am pleased to share this platform with you and it gladens my heart each time you use our solution <a class="text-primary" href="https/www.owerriproperty.com">(Owerri Property)</a> to meet your real estate needs in Owerri.</p>
                     </div>
                 </div>

@@ -13,6 +13,8 @@ if($uid){
 $myipAddress = $referrals->getrealip();
 $referrals->visited_page('Properties',$myipAddress);
 
+$property_count = $referrals->count_my_item($uid);
+
 ?>
 
 
@@ -92,7 +94,7 @@ $referrals->visited_page('Properties',$myipAddress);
                 <div class="col-md-12">
                     <div class="search-result bg-dark">
                         <h2 class="text-white">My Properties</h2>
-                        <p class="text-white">700 Results found</p>
+                        <p class="text-white"><?php echo $property_count; ?> Results found</p>
                         <p>
                         <button type="button" data-toggle="modal" data-target="#myModal" class="btn btn-primary mt-2 active    ">
                         <i class="fa fa-plus" aria-hidden="true"></i> Add Properties
@@ -267,7 +269,7 @@ Essential Scripts
     $(document).ready(function(){
 
     //CODE FOR FETCHING OUT NEWS STARTS HERE
-    var limit_f = 10;
+    var limit_f = 50;
 	var start_f = 0;
 	var action = 'inactive';
 	function load_all_properties(limit_f,start_f){
