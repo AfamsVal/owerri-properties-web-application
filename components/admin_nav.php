@@ -30,9 +30,10 @@
 							<li class="nav-item <?php  if($path ==="admin-dashboard"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>admin-dashboard">Admin</a></li>
 							<li class="nav-item  <?php  if($path ==="admin-properties"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>admin-properties">Properties</a></li>
 							<!-- <li class="nav-item <?php  if($path ==="marketplace"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>marketplace">Marketplace</a></li>
-							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>agents">Agents</a></li>	
-							<li class="nav-item <?php  if($path ==="contact-us"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>contact-us">Contact-Us</a></li>	
-						-->
+							<li class="nav-item <?php  if($path ==="agents"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>agents">Agents</a></li>	-->
+							<li class="nav-item <?php  if($path ==="admin-contact"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>admin-contact">Contact-Us</a></li>	
+							<li class="nav-item <?php  if($path ==="visitors"){ echo "active font-weight-bold"; }; ?>"><a class="nav-link" href="<?php echo $host; ?>visitors">Visitors</a></li>	
+						
 						</ul> 
 						<?php
 						

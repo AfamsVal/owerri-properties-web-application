@@ -528,6 +528,9 @@ if(isset($_POST['edit_and_post'])){
 
 
 
+if(isset($_POST['clear_all_visit'])){ echo $a = $obj->clear_all_visit(); }
+
+
 
 
 

@@ -20,6 +20,8 @@ RewriteRule ^my-property$ my_propertyx.php [NC,L]
 RewriteRule ^terms-conditions$ terms_conditionsx.php [NC,L]
 RewriteRule ^admin-properties$ admin_propertiesx.php [NC,L]
 RewriteRule ^faq$ faqx.php [NC,L]
+RewriteRule ^admin-contact$ admin_contactx.php [NC,L]
+RewriteRule ^visitors$ visitorsx.php [NC,L]
 RewriteRule ^terms-conditions$ terms_conditionsx.php [NC,L]
 RewriteRule ^single/([0-9a-zA-Z@_.]+)$ single.php?id=$1 [NC,L]
 

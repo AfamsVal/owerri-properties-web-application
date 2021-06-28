@@ -449,12 +449,59 @@ public function admin_update_user_amount($id,$uid,$amount,$max_ref_no,$bank_name
 		}
 		}else{ return "This user still have an active referral link or does not exist"; }
 	}
+
+
+
+
+
+	public function clear_all_visit(){
+		$con = $this->connect();
+		$query = mysqli_query($con,"DELETE FROM visited_pages");
+		return 1;
+	}
+	
+
+
+
+
+
+
+	public function multiple_ips($ip){
+		$con = $this->connect();
+		$query = mysqli_query($con,"SELECT DISTINCT uid, ip FROM visited_pages WHERE ip ='$ip'");
+		$count = mysqli_num_rows($query);
+		return array($count,$query);
+		}
+
+
+
+
 	
 	
 	
+	public function fetch_all_pages($start,$limit){
+		$start = $this->sql_clean($start);
+		$limit = $this->sql_clean($limit);
+		$con = $this->connect();
+		$query = mysqli_query($con,"SELECT * from visited_pages ORDER BY timer DESC LIMIT ".$start.", ".$limit."");
+			$count = mysqli_num_rows($query);
+
+				return array($count,$query);
+	}
 	
 	
 	
+	public	function select_all_contact_us(){
+		$con = $this->connect();
+		$sql = "select * from contact_us ORDER BY id DESC";
+		$query = mysqli_query($con,$sql);
+		$count = mysqli_num_rows($query);
+		return array($count,$query);
+		
+	}
+
+
+
 	
 	
 	
